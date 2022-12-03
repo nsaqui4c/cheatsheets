@@ -1,0 +1,156 @@
+
+use meta tag in case of responsice website
+<meta name= "viewport" content="width=device-width"> 
+
+use also other meta for more visibilty in search engine
+<meta name= "description" content="some description"> 
+<meta name= "keywords" content="medical, tourism "> 
+<meta name= "author" content="author"> 
+
+
+
+Lorem ipsum -- website to generate dummy texts
+
+copyright symbol - &copy;
+
+<span> meams inline - contents of this tag will not go to next line
+
+display:block   -- item will always be in its own line
+
+While PX, EM, and REM are primarily used for font sizing, %, VW, and VH are mostly used for margins, padding, spacing, and widths/heights. To reiterate, VH stands for “viewport height”, which is the viewable screen’s height. 100VH would represent 100% of the viewport’s height, or the full height of the screen.
+
+
+https://careers.ukg.com/careers/JobDetail/Senior-Software-Engineer-Full-Stack/31966
+###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###
+Repeater: 7a:17:35:9e:ce:e9
+
+Design of webpage
+
+<html>
+<head>
+	<meta>
+</head>
+<body>
+<header>
+	<div class="container">
+		<div id=""branding">
+		</div>
+		
+		<nav>
+			<ul>
+				<li></li>
+			</ul>
+		</nav>
+	
+	</div>
+</header>
+<section>
+	<div class="container">
+	
+	</div>
+</section>
+
+<section>
+	<div class="container">
+	
+	</div>
+</section>
+
+<section>
+	<div class="container">
+	
+	</div>
+</section>
+
+<footer>
+<p> Company name, copyright &copy; 2020</p>
+</footer>
+</body>
+</html>
+
+
+
+
+basic css setup
+
+body{
+font-family:Arial, Helvetica,sans-serif;
+font-size:15px;
+line-hieght:1.5;
+/*  or we can use below one liner
+font:15px/1.5 Arial, Helvetica,sans-serif;
+*/
+padding:0;
+margin:0;
+background-color:#f4f4f4;
+}
+
+
+
+
+/* Global */
+.container{
+width:80%;
+margin:auto #to bring it to center
+overflow:hidden; #no scroll bar in case of data is more than size of div
+}
+
+ul{
+  margin:0;
+  padding:0;
+}
+
+
+
+/* Header **/
+header{
+background: #35424a;     --for background color
+color:white;			 -- text color, but it will not affect the <a> tag
+padding-top:30px;
+min-height:70px;		 --using min, in case of responsive if it needs to line we need height to adjust
+border-bottom:#e8491d 3px solid 
+}
+
+
+
+
+header a{
+color:#ffffff;
+text-decoration:none;   --removing underline
+text-transform:uppercase;
+font-size:16px;
+}
+
+
+header li{
+  float:left;
+  display:inline;
+  padding: 0 20px 0 20px;
+}
+
+header #branding{
+  float:left;
+}
+
+header #branding h1{
+  margin:0;
+}
+
+header nav{
+  float:right;
+  margin-top:10px;
+}
+
+header .highlight, header .current a{     --any div, span or other tag if has class highlight or current within header tag will be affected
+  color:#e8491d;
+  font-weight:bold;
+}
+
+header a:hover{
+  color:#cccccc;
+  font-weight:bold;
+}
+
+
+
+

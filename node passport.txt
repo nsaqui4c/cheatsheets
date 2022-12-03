@@ -1,0 +1,277 @@
+passport.initialize :
+middleware is invoked on every request. It ensures the session contains a passport.user object, which may be empty.
+
+passport.session:
+ middleware is a Passport Strategy which will load the user object onto req.user if a serialised user object was found in the server.
+ 
+ 
+passport.deserializeUser :
+is invoked on every request by passport.session. It enables us to load additional user information on every request. This user object is attached to the request as req.user making it accessible in our request handling.
+
+
+Local Strategy is only invoked on the route which uses the passport.authenticate middleware.
+
+
+Only during this authentication passport.serializeUser is invoked allowing us to specify what user information should be stored in the session.
+
+
+Risks in Node.js
+Buffer vulnerabilities due to built-in memory management.
+Vulnerabilities caused by Native serialisation (JS and JSON) and Type manipulation in Node.js.
+Vulnerabilities carried from dependencies or npm packages that you pull.
+Expression Denial of Service (ReDoS) vulnerability was reported on HMAC package.
+
+
+
+Sockets:
+var io = require('socket.io'),
+    express = require('express');
+
+// Via Express 3.x server
+var app = express(),
+    server = require('http').createServer(app),
+    io = io.listen(server);
+server.listen(80);
+
+// Via Express 2.x server
+var app = express.createServer(),
+    io = io.listen(app);
+app.listen(80);
+
+// Standalone
+io = io.listen(80);
+
+// Now let's set up and start listening for events
+io.sockets.on('connection', function(socket) {
+    // We're connected to someone now. Let's listen for events from them
+    socket.on('some event', function(data) {
+        // We've received some data. Let's just log it
+        console.log(data);
+        // Now let's reply
+        socket.emit('event', {some: "data"}); //``Line A``
+    });
+});
+
+var socket = io.connect("http://<uri:port>/");
+socket.on("connect", function() {
+    // Do stuff when we connect to the server
+});
+socket.on("some event", function(data) {
+    // Log the data I received
+    console.log(data);
+    // Send a message to the server
+    socket.emit("other event", {some: "data"});
+});
+
+
+
+
+
+
+Mocha: Testing Environment
+Mocha is a javascript framework for Node.js which allows Asynchronous testing. It provides the environment in which we can use assertion libraries to test the code.
+
+Mocha comes with tons of great features like,
+
+simple async support, including promises.
+async test timeout support.
+before, after, before each, after each hooks
+use any assertion library you want
+To install Mocha on your machine globally run the command
+
+npm install -g mocha
+
+
+
+
+
+Chai: Assertion Library
+Mocha provides us with the environment for testing, but what to do with HTTP calls and how do we test whether a GET request is actually returning the JSON file, given a defined input? We need an assertion library. That's why mocha is not enough.
+
+So here it is Chai, the assertion library.
+
+Chai gives us the freedom of choosing the interface we prefer:should, expect, assert. They are all available and Chai HTTP add-on allows Chai library to easily access assertions on HTTP requests helping the user a lot.
+
+Chai is available for both node.js and browser,package is available through npm.
+
+npm install chai
+Here's how you include the chai browser build in your testing suite.
+
+<script src="chai.js" type="text/javascript"></script>
+
+
+
+
+
+
+Mocha and Chai Testing
+Mocha as the testing framework provides you with the flexibility to run asynchronous code serially. All uncaught exceptions are shown along with test case in which it was thrown making it easy to find.
+
+Creating test cases are easy using the describe() method. This is very much helpful in giving a proper structure to your tests by grouping other describe() and it() methods, where the actual tests are located as shown below:
+
+"use strict";
+
+var expect = require('chai').expect;
+
+describe('Math', function() {  
+    describe('#abs()', function() {
+        it('should return positive value of given negative number', function() {
+            expect(Math.abs(-5)).to.be.equal(5);
+        });
+    });
+});
+In mocha tests, you don't need to require() any of mocha methods
+
+Chai assertion library provides both TDD and BDD styles of programming for testing your code.
+
+Chai's expect interface uses more natural language API to write your assertions making your tests easier to write and improve upon later. This is done by chaining getters together to create and execute assertion
+
+Many getters can be chained and used with assertion methods like true ,ok ,exist ,empty to make some complex assertions.
+
+
+
+
+
+Writing Tests
+The recommended way to organize tests is put all of them in /test directory. By default, Mocha checks for unit tests using the globs ./test/*.js and ./test/*.coffee. From this path, it loads and stars executing.
+
+├── package.json
+├── lib
+│   ├── db.js
+│   ├── models.js
+│   └── util.js
+└── test
+    ├── db.test.js
+    ├── models.test.js
+    ├── util.test.js
+    └── util.js
+	
+	
+	
+	
+	
+	
+	
+
+
+
+Writing Tests...
+We'll choose to organize tests by function, which results in something like this:
+
+"use strict";
+
+var expect = require('chai').expect;
+
+describe('Math', function() {  
+    describe('#abs()', function() {
+        it('should return positive value of given negative number', function() {
+            expect(Math.abs(-5)).to.be.equal(5);
+        });
+
+        it('should return positive value of given positive number', function() {
+            expect(Math.abs(3)).to.be.equal(3);
+        });
+
+        it('should return 0 given 0', function() {
+            expect(Math.abs(0)).to.be.equal(0);
+        });
+    });
+ });
+});
+
+The output would look like :
+
+$ mocha .
+  Math
+    #abs()
+      ✓ should return positive value of given negative number 
+      ✓ should return positive value of given positive number 
+      ✓ should return 0 given 0 
+
+  3 passing (11ms)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hooks
+Most Unit tests are not simple. So you need others resources to perform your tests like a database, or some other resource to aid you with unit testing. These are provided by Mocha Hook methods some of which are given below:
+
+before(): Runs before all tests in the given block
+beforeEach(): Runs before each test in the given block
+after(): Runs after all tests in the given block
+afterEach(): Runs after each test in the given block
+These hooks help us in performing setup and teardown work required for tests
+
+"use strict";
+
+var expect = require('chai').expect;  
+var Camo = require('camo');  
+var User = require('../models').User;
+
+describe('Users', function() {
+s
+    var database = null;
+
+    before(function(done) {
+        Camo.connect('mongodb://localhost/app_test').then(function(db) {
+            database = db;
+            return database.dropDatabase();
+        }).then(function() {}).then(done, done);
+    });
+
+    afterEach(function(done) {
+        database.dropDatabase().then(function() {}).then(done, done);
+    });
+
+    describe('#save()', function() {
+        it('should save User data to database', function(done) {
+            // Use your database here...
+        });
+    });
+
+    describe('#load()', function() {
+        it('should load User data from database', function(done) {
+            // Use your database here...
+        });
+    });
+});
+First the function sent to before() method is executed, establishing connection to the database. After this step is done,immediately test suites are run.
+
+Data from one test suite should not affect the other tests. Hence, we must clear the data from the database after running each suite. afterEach() command is used for this.
+
+
+
+
+
+
+
+
+
+
+Running Tests
+This part of running tests is simple for most of the cases. Most projects just need to run mocha command to execute the test expecting the test is at /test .
+
+To execute a part of the test or single test case can be done by -g <pattern> or -f <sub-string> options.
+
+Some additionals that might help in mocha testing are :
+
+--invert: Inverts -g and -f matches
+--recursive: Include sub-directories
+--harmony: To Enable every harmony features in the Node
+The mocha -h command, gives us the full list of options.
+
+
+
+
+
+

@@ -1,0 +1,386 @@
+Objected Oriented Programming
+
+Access Modifiers:
+Access Control Modifiers
+	Java provides a number of access modifiers to set access levels for classes, variables, methods and constructors. The four access levels are −
+
+		Visible to the package, the default. No modifiers are needed.
+		Visible to the class only (private).
+		Visible to the world (public).
+		Visible to the package and all subclasses (protected).
+Non-Access Modifiers
+		Java provides a number of non-access modifiers to achieve many other functionality.		
+		The static modifier for creating class methods and variables.		
+		The final modifier for finalizing the implementations of classes, methods, and variables.		
+		The abstract modifier for creating abstract classes and methods.		
+		The synchronized and volatile modifiers, which are used for threads
+
+
+======================================================================================================================
+Constructor:
+	class Product{
+		String name;
+		Product(name){
+			this.name=name;
+		}
+	}
+======================================================================================================================	
+The super keyword
+	The super keyword is similar to this keyword. Following are the scenarios where the super keyword is used.
+	
+	It is used to differentiate the members of superclass from the members of subclass, if they have same names.
+	
+	It is used to invoke the superclass constructor from subclass.
+	
+======================================================================================================================	
+Invoking Superclass Constructor
+	super(values);
+	
+	
+======================================================================================================================
+Overiding:
+	Parent has same function with same arguments and child also has same then object of child will overide the parent function
+======================================================================================================================
+Inheritance
+
+		class Animal {
+		public void move() {
+			System.out.println("Animals can move");
+		}
+		}
+		
+		class Dog extends Animal {
+		public void move() {
+			System.out.println("Dogs can walk and run");
+		}
+		}
+		
+		public class TestDog {
+		
+		public static void main(String args[]) {
+			Animal a = new Animal();   // Animal reference and object
+			Animal b = new Dog();   // Animal reference but Dog object
+		
+			a.move();   // runs the method in Animal class
+			b.move();   // runs the method in Dog class
+		}
+		}
+	-------------------------
+	|Output					|
+	|Animals can move		|
+	|Dogs can walk and run	|
+	-------------------------
+	IN COMPILE CHECK FOR REFRENCE TYPE
+	IN RUNTIME CHECK FOR THE OBJECT TYPE
+	
+	In the above example, you can see that even though b is a type of Animal it runs the move method in the Dog class. The reason for this is: In compile time, the check is made on the reference type. However, in the runtime, JVM figures out the object type and would run the method that belongs to that particular object.
+
+	Therefore, in the above example, the program will compile properly since Animal class has the method move. Then, at the runtime, it runs the method specific for that object.
+
+	Consider the following example −
+	
+	
+	
+	
+	
+	
+	class Animal {
+	public void move() {
+		System.out.println("Animals can move");
+	}
+	}
+	
+	class Dog extends Animal {
+	public void move() {
+		System.out.println("Dogs can walk and run");
+	}
+	public void bark() {
+		System.out.println("Dogs can bark");
+	}
+	}
+	
+	public class TestDog {
+	
+	public static void main(String args[]) {
+		Animal a = new Animal();   // Animal reference and object
+		Animal b = new Dog();   // Animal reference but Dog object
+	
+		a.move();   // runs the method in Animal class
+		b.move();   // runs the method in Dog class
+		b.bark();
+	}
+	}
+	
+	
+	This will produce the following result −
+	|----------------------------------------------------------|
+	|	Output                                                 |
+	|	TestDog.java:26: error: cannot find symbol             |
+	|		b.bark();                                          |
+	|		^                                                  |
+	|	symbol:   method bark()                                |
+	|	location: variable b of type Animal                    |
+	|	1 error                                                |
+	|	This program will throw a compile time error since     |
+	|	b's reference type Animal doesn't have a method by     |
+	|	the name of bark.                                      |
+	|----------------------------------------------------------|
+======================================================================================================================
+Abstraction 
+Abstract Class
+	|---------------------------------------------------------------------------------------------------------------------------|            
+	|A class which contains the abstract keyword in its declaration is known as abstract class.                                 |
+	|                                                                                                                           |
+	|Abstract classes may or may not contain abstract methods, i.e., methods without body ( public void get(); )                |
+	|                                                                                                                           |
+	|But, if a class has at least one abstract method, then the class must be declared abstract.                                |
+	|                                                                                                                           |
+	|**If a class is declared abstract, it cannot be instantiated**                                                             |
+	|                                                                                                                           |
+	|To use an abstract class, you have to inherit it from another class, provide implementations to the abstract methods in it.|
+	|                                                                                                                           |
+	|If you inherit an abstract class, you have to provide implementations to all the abstract methods in it.                   |
+	|---------------------------------------------------------------------------------------------------------------------------|
+
+======================================================================================================================
+Polymorphism
+
+Polymorphism is the ability of an object to take on many forms. The most common use of polymorphism in OOP occurs when a parent class reference is used to refer to a child class object.
+
+		public interface Vegetarian{}
+		public class Animal{}
+		public class Deer extends Animal implements Vegetarian{}
+		Now, the Deer class is considered to be polymorphic since this has multiple inheritance. Following are true for the above examples −
+		
+		A Deer IS-A Animal
+		A Deer IS-A Vegetarian
+		A Deer IS-A Deer
+		A Deer IS-A Object
+		When we apply the reference variable facts to a Deer object reference, the following declarations are legal −
+		
+		Example
+		Deer d = new Deer();
+		Animal a = d;
+		Vegetarian v = d;
+		Object o = d;    
+
+		All the reference variables d, a, v, o refer to the same Deer object in the heap.
+
+======================================================================================================================
+Encapsulation
+
+	Encapsulation in Java is a mechanism of wrapping the data (variables) and code acting on the data (methods) together as a single unit. In encapsulation, the variables of a class will be hidden from other classes, and can be accessed only through the methods of their current class. Therefore, it is also known as data hiding.
+	
+	To achieve encapsulation in Java −
+	
+	Declare the variables of a class as private.
+	
+	Provide public setter and getter methods to modify and view the variables values.
+
+
+
+
+======================================================================================================================
+Interfaces
+	|---------------------------------------------------|
+	|public interface NameOfInterface {					|
+	|// Any number of final, static fields              |
+	|// Any number of abstract method declarations\     |
+	|}                                                  |
+	|---------------------------------------------------|
+	
+	An interface is similar to a class in the following ways −
+
+		An interface can contain any number of methods.
+		
+		An interface is written in a file with a .java extension, with the name of the interface matching the name of the file.
+		
+		The byte code of an interface appears in a .class file.
+		
+		Interfaces appear in packages, and their corresponding bytecode file must be in a directory structure that matches the package name.
+		
+	However, an interface is different from a class in several ways, including −
+
+		You cannot instantiate an interface.
+		
+		An interface does not contain any constructors.
+		
+		All of the methods in an interface are abstract.
+		
+		An interface cannot contain instance fields. The only fields that can appear in an interface must be declared both static and final.
+		
+		An interface is not extended by a class; it is implemented by a class.
+		
+		An interface can extend multiple interfaces.
+
+======================================================================================================================
+
+singleton
+
+	Not thread safe.
+	two thread will create two object of the same of class
+	
+		// Classical Java implementation of singleton
+		// design pattern
+		class Singleton
+		{
+			private static Singleton obj;
+		
+			// private constructor to force use of
+			// getInstance() to create Singleton object
+			private Singleton() {}
+		
+			public static Singleton getInstance()
+			{
+				if (obj==null)
+					obj = new Singleton();
+				return obj;
+			}
+			
+			
+	
+	
+	 Thread Synchronized Java implementation of
+		// singleton design pattern
+		class Singleton
+		{
+			private static Singleton obj;
+		 
+			private Singleton() {}
+		 
+			// Only one thread can execute this at a time
+			public static synchronized Singleton getInstance()
+			{
+				if (obj==null)
+					obj = new Singleton();
+				return obj;
+			}
+		}
+		
+		
+===========================================================================================================================
+Builder Design Pattern
+
+Builder pattern aims to “Separate the construction of a complex object from its representation so that the same construction process can create different representations.” It is used to construct a complex object step by step and the final step will return the object. The process of constructing an object should be generic so that it can be used to create different representations of the same object.
+
+
+
+===========================================================================================================================
+Virtual Methods
+In this section, I will show you how the behavior of overridden methods in Java allows you to take advantage of polymorphism when designing your classes.
+
+We already have discussed method overriding, where a child class can override a method in its parent. An overridden method is essentially hidden in the parent class, and is not invoked unless the child class uses the super keyword within the overriding method.
+
+Example
+/* File name : Employee.java */
+|--------------------------------------------------------------------------------------|
+| public class Employee {                                                              |
+|   private String name;                                                               |
+|   private String address;                                                            |
+|   private int number;                                                                |
+|                                                                                      |
+|   public Employee(String name, String address, int number) {                         |
+|      System.out.println("Constructing an Employee");                                 |
+|      this.name = name;                                                               |
+|      this.address = address;                                                         |
+|      this.number = number;                                                           |
+|   }                                                                                  |
+|                                                                                      |
+|   public void mailCheck() {                                                          |
+|      System.out.println("Mailing a check to " + this.name + " " + this.address);     |
+|   }                                                                                  |
+|                                                                                      |
+|   public String toString() {                                                         |
+|      return name + " " + address + " " + number;                                     |
+|   }                                                                                  |
+|                                                                                      |
+|   public String getName() {                                                          |
+|      return name;                                                                    |
+|   }                                                                                  |
+|                                                                                      |
+|   public String getAddress() {                                                       |
+|      return address;                                                                 |
+|   }                                                                                  |
+|                                                                                      |
+|   public void setAddress(String newAddress) {                                        |
+|      address = newAddress;                                                           |
+|   }                                                                                  |
+|                                                                                      |
+|   public int getNumber() {                                                           |
+|      return number;                                                                  |
+|   }                                                                                  |
+|}                                                                                     |
+----------------------------------------------------------------------------------------
+Now suppose we extend Employee class as follows −
+
+/* File name : Salary.java */
+|----------------------------------------------------------------------------------|
+|public class Salary extends Employee {                                            |
+|   private double salary; // Annual salary                                        |
+|                                                                                  |
+|   public Salary(String name, String address, int number, double salary) {        |
+|      super(name, address, number);                                               |
+|      setSalary(salary);                                                          |
+|   }                                                                              |
+|                                                                                  |
+|   public void mailCheck() {                                                      |
+|      System.out.println("Within mailCheck of Salary class ");                    |
+|      System.out.println("Mailing check to " + getName()                          |
+|      + " with salary " + salary);                                                |
+|   }                                                                              |
+|                                                                                  |
+|   public double getSalary() {                                                    |
+|      return salary;                                                              |
+|   }                                                                              |
+|                                                                                  |
+|   public void setSalary(double newSalary) {                                      |
+|      if(newSalary >= 0.0) {                                                      |
+|         salary = newSalary;                                                      |
+|      }                                                                           |
+|   }                                                                              |
+|                                                                                  |
+|   public double computePay() {                                                   |
+|      System.out.println("Computing salary pay for " + getName());                |
+|      return salary/52;                                                           |
+|   }                                                                              |
+|}                                                                                 |
+|----------------------------------------------------------------------------------|
+Now, you study the following program carefully and try to determine its output −
+
+/* File name : VirtualDemo.java */
+public class VirtualDemo {
+
+   public static void main(String [] args) {
+      Salary s = new Salary("Mohd Mohtashim", "Ambehta, UP", 3, 3600.00);
+      Employee e = new Salary("John Adams", "Boston, MA", 2, 2400.00);
+      System.out.println("Call mailCheck using Salary reference --");   
+      s.mailCheck();
+      System.out.println("\n Call mailCheck using Employee reference--");
+      e.mailCheck();
+   }
+}
+This will produce the following result −
+|----------------------------------------------------------|
+|Output                                                    |
+|Constructing an Employee                                  |
+|Constructing an Employee                                  |
+|                                                          |
+|Call mailCheck using Salary reference --                  |
+|Within mailCheck of Salary class                          |
+|Mailing check to Mohd Mohtashim with salary 3600.0        |
+|                                                          |
+|Call mailCheck using Employee reference--                 |
+|Within mailCheck of Salary class                          |
+|Mailing check to John Adams with salary 2400.0            |
+|----------------------------------------------------------|
+
+Here, we instantiate two Salary objects. One using a Salary reference s, and the other using an Employee reference e.
+
+While invoking s.mailCheck(), the compiler sees mailCheck() in the Salary class at compile time, and the JVM invokes mailCheck() in the Salary class at run time.
+
+mailCheck() on e is quite different because e is an Employee reference. When the compiler sees e.mailCheck(), the compiler sees the mailCheck() method in the Employee class.
+
+Here, at compile time, the compiler used mailCheck() in Employee to validate this statement. At run time, however, the JVM invokes mailCheck() in the Salary class.
+
+This behavior is referred to as virtual method invocation, and these methods are referred to as virtual methods. An overridden method is invoked at run time, no matter what data type the reference is that was used in the source code at compile time
+		
