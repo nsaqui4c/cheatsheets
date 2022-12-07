@@ -282,7 +282,69 @@ Most native React form components support both controlled and uncontrolled usage
 	}
 	
 ```
+* Implicit and explicit return
 
+```
+// returns: undefined
+// explanation: an empty block with an implicit return
+((name) => {})() 
+
+// returns: 'Hi Jess'
+// explanation: no block means implicit return
+((name) => 'Hi ' + name)('Jess')
+
+// returns: undefined
+// explanation: explicit return required inside block, but is missing.
+((name) => {'Hi ' + name})('Jess')
+
+// returns: 'Hi Jess'
+// explanation: explicit return in block exists
+((name) => {return 'Hi ' + name})('Jess') 
+
+// returns: undefined
+// explanation: a block containing a single label. No explicit return.
+// more: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/label
+((name) => {id: name})('Jess') 
+
+// returns: {id: 'Jess'}
+// explanation: implicit return of expression ( ) which evaluates to an object
+((name) => ({id: name}))('Jess') 
+
+// returns: {id: 'Jess'}
+// explanation: explicit return inside block returns object
+((name) => {return {id: name}})('Jess') 
+```
+	
+### Higher Order function 
+
+* A function which takes another component as parameter and return the component with its props along with some other functionality.
+
+```
+const withClapAnimation = (WrappedComponent) => {
+  class WithClapAnimation extends Component {
+    // This handles animation logic
+    animate=()=>{
+      //do something in this function 
+    }
+    render() {
+      return <WrappedComponent {...this.props} animate={this.animate}/>;
+    }
+  }
+  return WithClapAnimation;
+};
+```
+* WithClapAnimation is actually pointing to WrappedComponent with additional property "animate", and this property will be available to wrapped component when render.
+
+```
+const MediumClap = ({animate}) => {
+  animate()
+  return(<h1>hello</h1>)
+  
+  export default withClapAnimation(MediumClap)
+
+```
+
+	
 ## Hooks
 
 * callback function in UseEffect
@@ -293,12 +355,264 @@ return(()=>'This will call first to clean up last changes then above functions w
 },[]}
 
 ```
+* To make useEffect not to run on mounting but only if dependency changes
+```
+  const isComponentMounted =useRef( true)
+  useEffect(()=>{
+    if (!isComponentMounted.current)
+        onClap && onClap(clapState)
+    
+    isComponentMounted.current=false
 
+  },[clapState.count])
+  
+```
+* useState
+	* While modifying state value using state use prevState
+```
+const handleClick=()=>{
+setState(prevState=>({
+count:prevState.count+1
+})
+}
+```
+	
 * useMemo => to save expensive calculation
 * useCallback => to stop re-rendering of child
+* useEfect vs useLayoutEffect
+	* https://blog.logrocket.com/useeffect-vs-uselayouteffect-examples/
+
+* useContext
+
+	* create context with your choosen name
+	* get {Provider} from context
+	* wrap the return function with {Provider with all the values that you want in global level
+	* get the value in other component using same context name you have created.
+```
+const MediumClapContext=createContext()
+const {Provider} = MediumClapContext
 
 
+const MediumClap = ({children}) => {
+  const isClicked=true
+return (
+    <Provider value={isClicked}>
+    <button
+      ref={setRef}
+      data-refkey="clapRef"
+      className={styles.clap}
+      onClick={handleClapClick}
+    >
+      {children}
+    </button>
+    </Provider>
+  );
+}
+  
+const ClapIcon = () => {
+    const { isClicked }=useContext(MediumClapContext)
+  return (
+    <span>
+	</span>
+	)
+}
+```
+	
+## Custom Hooks
+* UsePrevios / useEffect cleanup examples 
 
+* creating custom hook to get previous value of prop or state
+```
+
+const usePrevious = (value)=>{
+	const ref= useRef()
+	useEffect(()=>{	
+	ref.current=value
+	})	
+	return ref.current
+	}
+//First it will return the value ref.current and then useEffect will update the new value
+//In any function useEffect runs after the return function.
+
+/***USAGE***/
+
+const prevCount= usePrevious(count)
+
+//Whenever value of count change, it will re-render causing invoking custom hook again
+//which will return the prev value and then change the ref to new value.
+
+
+```
+* Custom Hook for useEffectAfterMount
+```
+const useEffectAfterMount =(cb,deps)=>{
+  const isComponentMounted=useRef(true)
+  useEffect(()=>{
+    if(!isComponentMounted.current){
+        return cb()// incase user return something it will funct will return to useEffevt for cleanup
+    }
+    isComponentMounted.current=false
+  },deps)
+  
+}
+//usage:
+//useEffectAfterMount(()=>{animate.replay();},[clapState.count])
+```
+#### callbacks Ref
+* React also support another way to set ref called callback ref  which gives more fine-grain control over when ref are set and unset.
+
+* Instead of passing a ref attribute created by createRef() [useRef in function] you pass a function. 
+* The function recieved the react component instance or HTML Dom element as its argument, which can be stored and accessible elsewhere.
+
+```
+  const [{ clapRef, clapCountRef, clapTotalRef }, setRefState] = useState({});
+  const setRef = useCallback(node => {     
+      setRefState(prevRefState => ({
+        ...prevRefState,
+        [node.dataset.refkey]: node,
+      }));
+    
+  },[]);
+  
+ 
+const ClapCount = ({ count, setRef }) => {
+  return (
+    <span data-refkey="clapCountRef" ref={setRef} className={styles.count}>
+      + {count}
+    </span>
+  );
+};
+
+const ClapTotal = ({ countTotal, setRef }) => {
+  return (
+    <span data-refkey="clapTotalRef" ref={setRef} className={styles.total}>
+      {countTotal}
+    </span>
+  );
+};
+
+```
+## Props collection / collection of props passed to child component
+```
+//create object which contains collction of props
+const counterProps={
+        count:clapState.count,
+        'aria-maxvalue':MAXIMUM_USER_CLAP,
+        'aria-minvalue':0,
+        'aria-current-value':clapState.count
+    }
+
+//spread and pass the collection to child component
+<ClapCount setRef={setRef} {...counterProps}/>	
+
+//recieve the spread collection and then spread and call the collection	
+const ClapCount = ({ count, setRef,...restprops }) => {
+    return (
+      <span data-refkey="clapCountRef" ref={setRef} className={styles.count} {...restprops} >
+        + {count}
+      </span>
+    );
+  };
+```
+
+* the problem with prop collection is that user cannot modify the collection.
+* We can user prop getter function instead so that user can modify the props.
+
+```
+const getToggleProps=(props)=>({
+        onClick:updateClapState,
+        'aria-isClicked':clapState.isClicked,
+        ...props
+        
+    })
+
+<ClapContainer setRef={setRef} {...getToggleProps({onClick:()=>{console.log("overRide animation")}})}  >
+//getToggleProps  will first return all the props then add the props given in params. If the name is same as existence
+//then it will override the existant props.
+```
+## Styling
+
+### inline
+PROS:
+* Encapsulated
+* code sharing (styles in below code sample can be used iin multiple tags)
+* isolated
+* no library reqd
+* explicit dependencies
+
+CONS:
+* pseudo selector
+* animation key frame
+* media queries
+* cascade overRide
+```
+const styles={
+padding:'100px',
+
+}
+<button style={styles}>Press</button>
+
+```
+
+
+### css-in-js libraries
+Examples:
+* styled-component
+* emotion
+* styled-jsx
+* radium
+
+PROS:
+* pseudo selector
+* animation key frame
+* media queries
+* Co-located styles and code
+
+CONS:
+* chosing library
+* cascade override - because className are generally dynamically created
+
+### CSS stylesheet
+
+* Traditoinal stylesheet
+
+
+### css modules /scoped
+
+* almost traditional stylesheet
+* after complilation eventhough all the classname is in global namespace, but they are hashed
+* therefore no conflict of classname after compile.
+
+```
+SRC:					compiled:
+.link{					.link---a9b6798{
+
+}						}
+
+```
+
+```
+***component.module.css***
+
+.button{
+}
+
+
+***jsx file***
+
+import * as css from './component.module.css
+console.log(css)  --- >  //{button:button---a9b6798}
+<button className={css.button}>press</button>
+```
+```
+scoped css file for single js file.
+Create css file with name same as js file with extension .module.css
+import the css in below format, this will create the css attribute as object of classes
+	import classes from './something.module.css'
+Now u can use it as dynamic css
+	<div className={classes.header}> </div>
+
+```
 ## react-router-dom
 * npm install react-router-dom
 ```
@@ -432,17 +746,39 @@ return(
 
 ```
 
-## Styling
-* Scoped Css file
-```
-scoped css file for single js file.
-Create css file with name same as js file with extension .module.css
-import the css in below format, this will create the css attribute as object of classes
-	import classes from './something.module.css'
-Now u can use it as dynamic css
-	<div className={classes.header}> </div>
 
-```
+## Points
+
+* cannot have hooks under any condition
+	* if React find that number of hooks is different in consecutive renders it will through errors.
+	* This is why we need to define hooks at tops of any  function.
+	
+* useEffect is called only after the render or return in case of functional component.
+	* But since useEffect is at top the function is hoisted in stack.
+ 
+ 
+* Reducer
+	* A function which takes a state and action OBJECT
+	* and return new state based on the action
+	
+* react-codemod
+	* Facebook released react-codemod with every new version of react 
+	* developer can use this to migrate the code breaking changes to new version.
+* Preact
+	* totally different library very much similar to react
+	* library size is 9k, while for react it is 35k
+	
+	
+* Animation
+	* mojs
+	* react-motion
+	 
+* Form validation
+	* react-forms
+
+* useCallback -> to memotize a function
+* useMemo -> to memotize a value
+
 
 
 ## Links
