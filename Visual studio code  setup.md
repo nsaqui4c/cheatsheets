@@ -9,3 +9,7 @@
   OR
   javascript:javascriptreact
   ```
+
+## React
+- styled-componenets highlights  -> vscode-styled-components
+- ES7+ React/Redux/React-Native snippets  -> for react code snipped (rafce rfce etc)
