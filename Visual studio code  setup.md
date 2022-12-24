@@ -6,4 +6,6 @@
   Search emmet
   in included item add
   javascript: html
+  OR
+  javascript:javascriptreact
   ```
