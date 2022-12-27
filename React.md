@@ -779,6 +779,51 @@ const reducer = {
 
   export default store
  ```
+* Action
+```js
+export const addNoteAction=(subject,desc)=>async(dispatch)=>{
+    
+    dispatch({
+        type: NOTES_ADD_REQUEST,
+      });
+  
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+  
+      const { data } = await axios.post(
+        "http://localhost:5000/notes/addNote",
+        { subject,desc },
+        config
+      );
+      
+  
+      dispatch({
+        type: NOTES_ADD_SUCCESS,
+        payload: data,
+      });
+
+}
+```
+
+* Reducer
+```js
+export const addNoteReducer=(state={},data)=>{
+    switch (data.type){
+        case NOTES_ADD_REQUEST:
+            return{loading:true}
+        case NOTES_ADD_SUCCESS:
+            return{
+                loading:false,
+                id:data.payload
+            }
+        default:
+            return state
+    }
+}
+```
 
 ## Points
 
