@@ -701,6 +701,7 @@ return(
 ```
 
 ## Redux
+#### OLD
 * npm install react-redux
 * npm install redux-thunk
 * npm install redux-devtools-extension --save
@@ -745,7 +746,39 @@ return(
 		export default store
 
 ```
+### NEW
+```
+import { configureStore } from '@reduxjs/toolkit'
+const reducer = {
+    todos:[],
+    visibilityFilter: 'SHOW_COMPLETED',
+    someOtherReducer:{}
+  }
 
+  const preloadedState = {
+    todos: [
+      {
+        text: 'Eat food',
+        completed: true,
+      },
+      {
+        text: 'Exercise',
+        completed: false,
+      },
+    ],
+    visibilityFilter: 'SHOW_COMPLETED',
+  }
+  const store = configureStore({
+    reducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware(),//.concat(logger),
+    //default middlewares are [thunk, immutableStateInvariant, serializableStateInvariant]
+    devTools: true, //process.env.NODE_ENV !== 'production',
+    preloadedState,
+  
+  })
+
+  export default store
+ ```
 
 ## Points
 
