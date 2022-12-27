@@ -615,7 +615,7 @@ Now u can use it as dynamic css
 ```
 ## react-router-dom
 * npm install react-router-dom
-```
+```js
 ### You are using react-router-dom version 6, which replaced Switch with the Routes component
 import {Route,Routes} from 'react-router-dom'
 function App() {
@@ -647,6 +647,47 @@ function App() {
 	  </BrowserRouter>
     </div>
   );
+```
+* shared Layout ("OUtlet")
+```js
+    <BrowserRouter>
+      <Routes>
+        <Route path="/dash" element={<SharedLayout/>}>
+          {/*Nested paths. All the below path are now relative to '/dash' -> /dash/stats
+           // child pages will be visible in <SharedLayout/> Template wherever we have mentioned <Outlet/>
+	   // in Below eg stats page will be visible twice in shared layout page in the places of Outlet   
+	      */}
+          <Route path="stats" element={<Stats />} />
+          <Route path="all-jobs" element={<AllJobs />} />
+          <Route path="add-job" element={<AddJob />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/landing" element={<Landing />}></Route>
+        <Route path="*" element={<Error />}></Route>
+      </Routes>
+    </BrowserRouter>
+
+
+
+//Shared Layout page
+const SharedLayout = () => {
+  return (
+    <Wrapper>
+        <nav>
+            <Link to='add-job' className="btn">add job</Link>
+            <br/>
+            <br/>
+            <Outlet/>
+            <br/>
+            <Link to='all-jobs' className="btn">all jobs</Link>
+        </nav>
+        <Outlet/>
+        
+    </Wrapper>
+  )
+}
+
 ```
 
 * react-router-dom -> match
