@@ -650,14 +650,20 @@ function App() {
 ```
 * shared Layout ("OUtlet")
 ```js
+	
+	 {/*Nested paths. All the below path are now relative to '/dash' -> /dash/stats
+           // child pages will be visible in <SharedLayout/> Template wherever we have mentioned <Outlet/>
+	   // in Below eg stats page will be visible twice in shared layout page in the places of Outlet   
+	   // If we go to /dash no child page will render.
+	      	// If we want to make a child page default load even on /dash change path='stats' to just index
+	*/}
+	
+	
     <BrowserRouter>
       <Routes>
         <Route path="/dash" element={<SharedLayout/>}>
-          {/*Nested paths. All the below path are now relative to '/dash' -> /dash/stats
-           // child pages will be visible in <SharedLayout/> Template wherever we have mentioned <Outlet/>
-	   // in Below eg stats page will be visible twice in shared layout page in the places of Outlet   
-	      */}
           <Route path="stats" element={<Stats />} />
+	      // <Route index element={<Stats />} />    to make it default
           <Route path="all-jobs" element={<AllJobs />} />
           <Route path="add-job" element={<AddJob />} />
           <Route path="profile" element={<Profile />} />
