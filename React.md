@@ -731,6 +731,15 @@ import {useLocation} from 'react-router-dom'
 	<Link to '/about' > About</Link>
 	//This will not reload the page, instead just change the component
 ```
+* NavLink
+	* gives us extra functionality such as different style in case link is active
+```js
+import { NavLink } from 'react-router-dom';
+<NavLink to={path} key={id} onClick={toggleSidebar}
+            className={({ isActive }) =>
+              isActive ? 'nav-link active' : 'nav-link'
+            }>Some link</NavLink>
+```
 
 * Elements which are not routed with react-router-dom
 ```
