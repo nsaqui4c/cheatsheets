@@ -919,6 +919,6 @@ export const addNoteReducer=(state={},data)=>{
 
 * https://www.adaface.com/blog/react-interview-questions/#q116
 * https://slawkolodziej.com/posts/guide-testing-redux-connected-components-with-react-testing-library-and-jest
-* https://www.youtube.com/watch?v=-CwzaTKniH4  -- charts in react
+* https://www.youtube.com/watch?v=-CwzaTKniH4  -- charts/graph in react (rechart)
 * https://www.youtube.com/watch?v=ajTvmGxWQF8  -- Arrow function
 * https://daveceddia.com/what-is-a-thunk/      -- Define redux-thunk
