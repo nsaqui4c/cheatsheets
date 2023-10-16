@@ -85,6 +85,24 @@ https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/37139998-6514-49c3-b38d-438969175712)
 
 =====================================================================================================================================================
+## Powershell and CLI
+Powershell and cli has different syntax for command, but they all follow same pattern
+### Powershell
+* Get-AzVirtualNetwork
+* New-AzVirtualNetwork
+* Remove-AzVm
+* Get-AzVm
+* New-AzVm
+* Remove-AzVm
+* Get-AzVirtualNetworkSubnetConfig
+
+### CLI
+* az vm list
+* az vm create
+* az vm delete
+* az network list
+* az network vnet list
+* az network vnet subnet list
 
 
 
