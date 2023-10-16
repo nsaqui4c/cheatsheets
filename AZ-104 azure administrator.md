@@ -104,6 +104,9 @@ Powershell and cli has different syntax for command, but they all follow same pa
 * az network vnet list
 * az network vnet subnet list
 
+#### chosing a subscription using CLI
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/0267b1c2-e4ec-4bbb-b9c6-fc9dd0deee05)
+
 
 
 
