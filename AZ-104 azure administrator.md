@@ -106,11 +106,16 @@ Powershell and cli has different syntax for command, but they all follow same pa
 
 #### chosing a subscription using CLI
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/0267b1c2-e4ec-4bbb-b9c6-fc9dd0deee05)
-
-
-
-
 ===================================================================================================================================================
+## Azure active directory
+* Azure active directory in not duplicate of windows active directory
+* It is use for identity and access management in cloud.
+* It is a identity provider for the third party.
+* employee can use their computer credential to log into third party which has integration with AD scuh as dropbox.
+* We can use APIs to integrate custom software also.
+* Recently Microsft put AD under Microsoft Entra Umbrella
+* AD had free and paid plan. Paid plan is per user. So If we want 10 user to give extra functionality, we just have to pay for 10 user.
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/85f735f6-91a3-4781-98a8-a43d49898a94)
 
 
 
