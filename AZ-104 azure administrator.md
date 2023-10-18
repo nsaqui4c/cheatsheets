@@ -124,7 +124,7 @@ Powershell and cli has different syntax for command, but they all follow same pa
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/e21bbe58-f948-43ef-a22c-68dbf5deab29)
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/759255bc-d2c7-4a93-9db1-2eb1c5c05c35)
 
-*To create and use Azure services, you first need to sign up [for an Azure account]. 
+* To create and use Azure services, you first need to sign up [for an Azure account]. 
 * An Azure tenant is a single dedicated and trusted instance of Azure AD. Each tenant (also called a directory) represents a single organization
 
 * Azure tenant is a directory. Azure subscription is an object that represents a "folder" that you can put resources in. Subscriptions are tied to tenants. so 1 tenant can have many subscriptions, but not vice versa.
@@ -143,6 +143,34 @@ Powershell and cli has different syntax for command, but they all follow same pa
   * assigned -> whatever role assigned to user will be there
   * dynamic -> add roles based on job title, surmname,department etc
 
+### Administritive units
+* It helps to restrict the access to certain administritive area that admin has created.
+   * allows administrator user to affect only certain part of organization not the whole organization
+* Steps:
+   * create three teacher and three students and give teachers help desk access
+   * now all teacher have access to all student password reset option
+   * Create classroom1 administritive unit from Entra ID left panel
+   * Assign role to this newly created admin unit as Password administrator and add teacher 1 to this.
+   * Now we have classroom1 with teacher1 as password admin.
+   * Add student1 as member of classroom1.
+   * Now teacher1 can change account of student1 only
+   * We can also add group instead of user, so that teacher1 can modify student grp, but cannot touch teacher group
+
+### Devices
+* we can define only devices which meets certain standard can access this application.
+* We can also conditional access.
+   * let say we have company device added here, and user is using company device then no issue
+   * If user is using home device then enable MFA(Multi factor authentication)
+     
+### Bulk Operation
+* we can add multiple user at once using CSV file
+* Go to user -> bulk operation -> downlaod csv sample file -> fill data -> upload submit
+
+### Externl User
+* they need to invited rather created
+* We can add roles and group
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/f24105a7-5c17-4a53-ac18-bc93ffcaa97e)
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/1a24446c-5252-449c-9ee1-44f0f4b83f68)
 
 
 ===============================================================================================================
