@@ -117,6 +117,32 @@ Powershell and cli has different syntax for command, but they all follow same pa
 * AD had free and paid plan. Paid plan is per user. So If we want 10 user to give extra functionality, we just have to pay for 10 user.
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/85f735f6-91a3-4781-98a8-a43d49898a94)
 
+**Check all the plans for the exam**
+
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/e131a46d-e00d-41e4-9a82-7a20b139059a)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/858c334d-3cd9-4509-8b83-b6737d4645a9)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/e21bbe58-f948-43ef-a22c-68dbf5deab29)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/759255bc-d2c7-4a93-9db1-2eb1c5c05c35)
+
+*To create and use Azure services, you first need to sign up [for an Azure account]. 
+* An Azure tenant is a single dedicated and trusted instance of Azure AD. Each tenant (also called a directory) represents a single organization
+
+* Azure tenant is a directory. Azure subscription is an object that represents a "folder" that you can put resources in. Subscriptions are tied to tenants. so 1 tenant can have many subscriptions, but not vice versa.
+* Resources from one subscription are isolated from resources in other subscriptions
+* An owner of a tenant can decide to have multiple subscriptions
+* An identity is an object that can be authenticated. The identity can be a user with a username and password. Identities can also be applications or other servers that require authentication by using secret keys or certificates. Azure AD is the underlying product that provides the identity service.
+* We can add custom domain, from Entra ID page, so that we can user email of that domain (naj.saq@capgemini.com)
+
+### Creating user
+* We can create new user on any tenant, and assign them roles, department, jobtitle from EntraID
+
+### User Groups
+* We can create groups in Entra ID and add users in the groups
+* Group is just for dividing people. Adding people in group does not add any roles
+* There are two ways we can add role to groups
+  * assigned -> whatever role assigned to user will be there
+  * dynamic -> add roles based on job title, surmname,department etc
+
 
 
 ===============================================================================================================
