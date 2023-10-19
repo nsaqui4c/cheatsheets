@@ -1,4 +1,4 @@
-Here are some official Microsoft websites that you really should bookmark when studying for the AZ-104 exam:
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/6ffae254-dc6c-4599-9393-366dd20aaa38)Here are some official Microsoft websites that you really should bookmark when studying for the AZ-104 exam:
 
 Learning paths on MS Learn:
 
@@ -231,6 +231,24 @@ Powershell and cli has different syntax for command, but they all follow same pa
      ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/b6220573-8796-4d42-869c-302124117b33)
      ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/82657351-5297-44ae-b448-1d274c587b27)
 
+#### Resource group scope
+* We can create multiple resource group and create resources under them
+   * A tenant -> multiple subscription -> multiple resource grp -> multiple resource
+* we can go to IAM in specific resource grp -> role assignment -> add new user with roles to that specific resource grp
+* In the given case student has contributor access without delete for whole subscription
+* Now we have given full contributor access to given resource grp
+* Now for this RG, students will have full access
+  * all the accesses merge themsleve.
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/4081e20a-e30b-4ce5-8e07-aa9a948c5cef)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/8d2f0b7d-c266-4909-b77c-3955f7124c6b)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/f694e5a5-d5c4-41e9-af32-743b7684605d)
+
+#### Interpret access assignment
+* to check user access
+  * entra ID -> users -> select User -> Azure role assignment
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/1ebd3824-1fd3-4274-a355-a7ba92817e98)
+
+**NOTE:entra ID -> users -> select User -> Assigned roles  is for AD roles**
 
 
    
