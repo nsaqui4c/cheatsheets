@@ -174,6 +174,120 @@ Powershell and cli has different syntax for command, but they all follow same pa
 
 
 ===============================================================================================================
+## Role based access Control (RBAC)
+* We can create roles and assign access to roles
+* Example of roles:
+  * Developer
+  * Development manager
+  * IT operation
+  * Report reader
+  * Global Admin
+* We can assign one or more role to a user
+
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/a168469c-76f7-4892-a377-1809989a8cc3)
+
+
+**NOTE : Create storage account by enabling AD authorizatoin and diabling key based access to properly manage AD based authentication**
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/b62d2174-41d2-419f-b34f-017fd78f3a8c)
+
+
+===============================================================================================================
+## Storage account
+#### creating storage account
+ ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/8137c32e-51a9-494e-bd4c-9c65078b89c2)
+ ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/a16b4ede-7136-4cc2-a4bb-3ff06086cd80)
+ * We have option to choose AD authoriation or key access while creating storage
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/e6db819f-3a4d-4804-af2b-391c95bcd82f)
+ * By default storage account created with security key. Anybody who has this access key has admin accesss to storage
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/c8f68eee-0ded-4629-9abb-1e1d879504ce)
+
+#### Assigning Permission to storage account
+* Owner permission has access to give other user accesses, but it does not have read and write access to storage
+ ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/e2ef5827-dfc2-4ba3-81e3-9d8c47d24819)
+
+* Add role assignment to add files in storage
+ ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/7528ea21-7ff9-4f10-b984-22abf50688c6)
+ ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/4e0f023c-d369-4efc-8232-4393721a4b27)
+* we can also give access from Access control(IAM) from left panel
+
+#### Managing resource with role
+* In storage account we can restrict certain type of user to specific files only
+  *  once done selected user can access only specific folder in storage.
+  * Create two container ->open one of them ->click on access control(left panel) -> select role->select member
+    ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/18c2736d-9ba9-45cb-8795-31de3086cde0)
+    ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/3aaf330e-3b09-4356-abed-a8cfdab58270)
+    ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/803b7694-3b17-444a-aaef-2192c934e6ed)
+    ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/0c970016-ddb9-488d-a9fe-c3224226980f)
+
+#### Creting custom roles
+* User needs to be premium (p1 or p2) level to get assigned custome role.
+* To create custom role
+   * go to subscription -> access control(IAM) -> create custom role
+   * clone a role and then add or delete from the cloned role
+   * Select Scope. By default it will be subscription level. We can select specifc resource if want to.
+   * No we can assign this role to any user from subscription.
+     ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/0e14d508-0295-4806-8df6-86a43daac528)
+     ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/d71db277-fae0-4c14-b8d9-652db1472f7e)
+     ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/b6220573-8796-4d42-869c-302124117b33)
+     ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/82657351-5297-44ae-b448-1d274c587b27)
+
+
+
+   
+
+
+
+
+  
+
+
+===============================================================================================================
+
+
+
+
+===============================================================================================================
+
+
+
+
+===============================================================================================================
+
+
+
+
+===============================================================================================================
+
+
+
+
+===============================================================================================================
+
+
+
+
+===============================================================================================================
+
+
+
+
+===============================================================================================================
+
+
+
+
+===============================================================================================================
+
+
+
+
+===============================================================================================================
+
+
+
+
+===============================================================================================================
+
 
 
 
