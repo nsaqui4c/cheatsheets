@@ -443,7 +443,7 @@ Powershell and cli has different syntax for command, but they all follow same pa
 * Copy File with Az Copy
   * Command line tool to tranfer file from one storage account to another
   * We can dowlnload tool from internet
-  * azcopy <source url with SAS> <Destination URL with SAS>
+  * azcopy < source url with SAS > < Destination URL with SAS >
 
 
 
