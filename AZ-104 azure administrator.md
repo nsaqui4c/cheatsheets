@@ -352,7 +352,25 @@ Powershell and cli has different syntax for command, but they all follow same pa
    * We can also choose to have second layer of encryption - hardware layer encryption
    ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/95adfffe-a984-422f-bfee-efb981e7cf82)
 
-    
+* We have 4 different storage types present
+  * Blobs - for any files and images etc
+  * file share - SMB drive to share your file among Vms
+  * Queue - are like messaging service between 2 apps. anyone can add and read messages in queue
+  * Table - Storing data in semi structured manner in storage account.
+
+* Blob Storage
+  * We can see the URL of any file from its properties
+  * The file or folder are not directly accessible using URL. We need SAS(shared access signature) or SHA key
+  * We can set new key autumatically after specific time using 'set rotation reminder'
+  * We can generate SAS with certain permission. SAS is a key signed using SHA key for selected resource
+ 
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/6a963d45-a7b5-442c-940d-0f42ac7cdd29)
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/d99f95d7-7aa9-456e-ad01-bc1e43a79ea2)
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/aa761caa-7ef0-43e5-8b1d-c2a69dd7b12b)
+
+
+
+
 ===============================================================================================================
 
 
