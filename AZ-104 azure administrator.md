@@ -392,6 +392,17 @@ Powershell and cli has different syntax for command, but they all follow same pa
     ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/342f41b1-c0c7-40af-bcde-cc86257a726d)
   * There are minimum storage time for cool,cold and archive. Even if we delete file, we will be billed for 30 days
   * Making file archive, will takedown file from internet, restoring will may take several hours
+
+
+* Azure AD access control for storage
+  * We can provide storage access to AD users, using Access control(IAM) 
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/1b984693-f711-4990-b020-f1abda6f55f2)
+* Soft delete Restore
+  * We can enable soft delete restore.
+  * Once it is available we can restore file
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/b615ee70-709a-46e7-a1de-3b5a7c3466a2)
+
+
 ===============================================================================================================
 
 
