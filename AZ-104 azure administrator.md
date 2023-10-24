@@ -264,7 +264,33 @@ Powershell and cli has different syntax for command, but they all follow same pa
    * cost alert - We can see and add all the alerts. We can also anamoly alert, which triggers on any anamoly observes by Azure
    * budget - we can assign our budget and create alert based on it. alert can be set once any certain percentage of budget reached.
    * Advisor recommendation - Gives recommendation for cost management
- 
+ * Resource Lock
+   * We can create lock on resource grp or resource
+   * Only owner has access to delete the locks
+   * Unless locks are deleted we cannot modify or delete resource.
+     ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/e2c7c63f-e616-49ef-81bb-2da9d8eda57d)
+
+* Azure Policy
+  * Allows you to set rule that specify what is and is not allowed in your env.
+     * All VM must have backup
+     * VM should be B2 only
+  * We can create our own policy using JSON format
+  * We can select subscription and resource to implement the policy.
+  * We can exclude any specific resource also.
+  * Policy Enforcement :
+    * We can outright deny creation of any resource which doesnot meet the policy
+    * Or we can allow resource to be created, but the resource will be in non-compliant report
+  * It will only affect those resource which are created after policy, but older resource will be in report.
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/f0cd6a57-c509-4c3a-b763-68df8197c23d)
+
+* Apply and manage tags in resource
+  * We have tags option in left tab in any resource.
+  * We can add ksy value pair there (env: dev)
+  * Tags are used other management tools such as cost analysis
+
+* Move reource
+  * We can move resource from one resource grp to another and one subscription to another or to another region
+  * Moving them to other resource grp or subscription will change its resource id
 
 
 
