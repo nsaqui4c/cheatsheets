@@ -1,4 +1,10 @@
-![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/6ffae254-dc6c-4599-9393-366dd20aaa38)Here are some official Microsoft websites that you really should bookmark when studying for the AZ-104 exam:
+===============================COURSE MATERIAL================================
+https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/tree/master/Instructions/Labs
+==============================================================================
+
+
+
+Here are some official Microsoft websites that you really should bookmark when studying for the AZ-104 exam:
 
 Learning paths on MS Learn:
 
@@ -288,7 +294,7 @@ Powershell and cli has different syntax for command, but they all follow same pa
   * We can add ksy value pair there (env: dev)
   * Tags are used other management tools such as cost analysis
 
-* Move reource
+* Move resource
   * We can move resource from one resource grp to another and one subscription to another or to another region
   * Moving them to other resource grp or subscription will change its resource id
 
