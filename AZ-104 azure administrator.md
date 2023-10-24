@@ -428,10 +428,22 @@ Powershell and cli has different syntax for command, but they all follow same pa
   ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/03f058f7-2e0b-46fc-8fee-6174441c36c6)
 
 * Moving Large files using Azure Data Disk
+  * We can ask for disk from MS, we have fill the disk and send them back with courier
+  * Data box requires certain type of subscription.
+  * We can use Import/Export job in pay as you go subscription.
+     * In this we have to send our own disk to upload data in Azure storage
 
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/41de6d24-63e9-448b-8013-9ed3acbdc176)
-![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/b7a4135f-4142-414b-9c6b-e69ddb780571)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/37f297ba-c007-4901-8b71-b7c113a898fa)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/ad93495a-4b8f-4ea0-bc3b-3a14d69dfd32)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/e42f6b85-b9fd-4559-be49-f939d05eb79c)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/6967c494-2c67-4ffe-986d-f55f3fa5ad3b)
 
+
+* Copy File with Az Copy
+  * Command line tool to tranfer file from one storage account to another
+  * We can dowlnload tool from internet
+  * azcopy <source url with SAS> <Destination URL with SAS>
 
 
 
