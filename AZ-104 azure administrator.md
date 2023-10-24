@@ -403,6 +403,37 @@ Powershell and cli has different syntax for command, but they all follow same pa
   * Once it is available we can restore file
   ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/b615ee70-709a-46e7-a1de-3b5a7c3466a2)
 
+* Snapshot and backup
+  * we can create daily backup. backup are saved for specific time
+  * We have manually create snapshot. Once created, it will be available till deleted.
+    * snapshot can have all the file present at that time
+    * we will also have url of snapshot files
+
+* Versioning of blobs
+  * We can go to Data protection tab after creattion of storage to enable versioning.
+  * We can go to Lifecycle management tab -> Add rule ->  move to cold storage/delete file after x days
+
+* Monitoring
+  * Insight - Errors, authorization error, performance, Availability, capacity
+  * Alert - you can alert for specific used capacity, availability issue etc
+  * Metrics - way of creating your own graph
+  * Workbook - temaplate for dashboard
+  * Diagnostic  - Specifies list of categories that you want logs to collect metric for-(read,write,delete, transaction metric)
+  * Logs - we can query logs from here
+
+* Lifecycle Management
+  * Automatically move files from one access tier to another based on rule you have created
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/39065875-97df-4def-be88-3dcb6e9714d8)
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/059b1a75-e780-4271-b8db-11c4c1410222)
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/03f058f7-2e0b-46fc-8fee-6174441c36c6)
+
+* Moving Large files using Azure Data Disk
+
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/41de6d24-63e9-448b-8013-9ed3acbdc176)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/b7a4135f-4142-414b-9c6b-e69ddb780571)
+
+
+
 
 ===============================================================================================================
 
