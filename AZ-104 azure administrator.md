@@ -445,7 +445,14 @@ Powershell and cli has different syntax for command, but they all follow same pa
   * We can dowlnload tool from internet
   * azcopy < source url with SAS > < Destination URL with SAS >
 
+* Storage Browser
+  * We can manage storage data from here
+  * We have also storage explorer which downloadable app version for Storage browser
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/a3826bd5-c349-4c94-91e3-739b89da9d7c)
 
+* Object Replication
+  * copy blobs asynchronoulsy from source storage account to destination account
+    ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/27ee2d29-2d2a-4bd7-b6f1-2dbb4ba9ad3d)
 
 ===============================================================================================================
 
