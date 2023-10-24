@@ -397,6 +397,7 @@ Powershell and cli has different syntax for command, but they all follow same pa
 * Azure AD access control for storage
   * We can provide storage access to AD users, using Access control(IAM) 
   ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/1b984693-f711-4990-b020-f1abda6f55f2)
+
 * Soft delete Restore
   * We can enable soft delete restore.
   * Once it is available we can restore file
