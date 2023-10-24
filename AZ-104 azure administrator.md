@@ -322,8 +322,37 @@ Powershell and cli has different syntax for command, but they all follow same pa
   * available for GRS and GZRS
 
 
+* Networking
+  * We have option to make accessible from all internet
+  * selected IP
+  * Private access
+* Network Routing
+  * Microsoft Network Routing - make sure that you are inside azure as long possible
+  * Internet routing - traffic will exit routing as soon we call for external resource.
+  * eg. user in japan ask for storage item in US
+    * MS network - data will travel in azure till it reaches japan and then exit to internet
+    * Internet routing - traffic will exit in US and travel to japan in public internet.
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/759c34d2-0ea2-4902-81f9-e79d598e7bc8)
 
+* Data protection
+  * Recovery - protect your data from erroneous deltion and modification
+    * Soft delete for files share, blobs and container. Helps you recover item in given time after deletion
+    * Point-in-time restore - create backup image of current status and you can restore to that status.
+  * Tracking
+    * enabling versioning for blobs - Manage version and keep track changes in blob data
+    * enable blob change feed - create logs for changes
+  * Access control
+    * Allows you to set time-based retention policy on the account-level that will apply to all blob versions.
+    * Data cannot be deleted for given time
+    * for governance and audit purpose for logs etc
 
+ * Encryption
+   * All file are encrypted by default
+   * We have option to either MS to manage keys or we can manage encryption keys.
+   * We can also choose to have second layer of encryption - hardware layer encryption
+   ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/95adfffe-a984-422f-bfee-efb981e7cf82)
+
+    
 ===============================================================================================================
 
 
