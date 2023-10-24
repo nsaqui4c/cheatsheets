@@ -387,6 +387,11 @@ Powershell and cli has different syntax for command, but they all follow same pa
 * Access Tier
   * Hot - frequently access data lower access code higher storage cost
   * Cool - Infrequently access data - higher access cost lower storage cost
+  * We can change it from configuration setting even after creation of storage
+  * We have other Tier also, which we can assign to specific file, by clicking on change tier in three dots
+    ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/342f41b1-c0c7-40af-bcde-cc86257a726d)
+  * There are minimum storage time for cool,cold and archive. Even if we delete file, we will be billed for 30 days
+  * Making file archive, will takedown file from internet, restoring will may take several hours
 ===============================================================================================================
 
 
