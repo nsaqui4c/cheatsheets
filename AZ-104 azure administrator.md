@@ -369,8 +369,24 @@ Powershell and cli has different syntax for command, but they all follow same pa
   ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/aa761caa-7ef0-43e5-8b1d-c2a69dd7b12b)
 
 
+* Stored access policies
+  * Kind of condition on SAS, so that we can revoke permissions
+  * We have to create access policy first and then while creating SAS we can select the policy as condition on SAS
+  * Now if we delete access policy, then generated SAS will be invalidated.
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/b8354165-3dba-4dcf-93be-16b8725ba9d0)
 
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/06fa990e-ef3a-4915-a24d-16913ea056cb)
 
+* Redundant storage
+  * We can change redundancy plan from configuration setting in storage resource.
+  * We can get read url of secondary region from Endpoints
+  * We can see the secondary region from geo-replication(Redundancy now) menu
+  * In case of emergency, we can choose our secondary region from Redundancy-> fail over
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/c7d0f1d4-3bc9-4bda-a7cb-954ded79c908)
+
+* Access Tier
+  * Hot - frequently access data lower access code higher storage cost
+  * Cool - Infrequently access data - higher access cost lower storage cost
 ===============================================================================================================
 
 
