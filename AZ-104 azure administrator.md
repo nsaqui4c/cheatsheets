@@ -248,19 +248,23 @@ Powershell and cli has different syntax for command, but they all follow same pa
   * entra ID -> users -> select User -> Azure role assignment
   ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/1ebd3824-1fd3-4274-a355-a7ba92817e98)
 
-**NOTE:entra ID -> users -> select User -> Assigned roles  is for AD roles**
-
-
-   
-
-
-
-
-  
+**NOTE:entra ID -> users -> select User -> Assigned roles  is for AD roles** 
 
 
 ===============================================================================================================
-
+## Manage subscription and governance
+* Subscription Dashboard
+  * We can have multiple subscription in a tenant to manage different env, organization etc 
+  * We can rename our subscription name
+  * We can check the subscription plan
+  * We can move subscription to different tenant
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/f9a04337-33d4-47f8-a2f0-7b92fbad8741)
+* Cost management - There are 4 submenu in cost management
+   * Cost analysis - We can see our current cost, estimated cost for month end, breakup- resource wise, location and resource grp wise
+   * cost alert - We can see and add all the alerts. We can also anamoly alert, which triggers on any anamoly observes by Azure
+   * budget - we can assign our budget and create alert based on it. alert can be set once any certain percentage of budget reached.
+   * Advisor recommendation - Gives recommendation for cost management
+ 
 
 
 
