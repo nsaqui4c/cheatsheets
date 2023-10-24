@@ -306,6 +306,20 @@ Powershell and cli has different syntax for command, but they all follow same pa
 
 
 ===============================================================================================================
+## Storage account
+* Storage account name should be unique throught Azure.
+* LRS - replicates your storage account three times within a single data center in the primary region
+* ZRS - replicates your storage account synchronously across three Azure availability zones in the primary region
+* GRS - copies your data synchronously three times in two region, 100 miles away from each other.
+* GZRS - combination of GRS and ZRS. two different region with physical separation of 3 copies in different zones.
+
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/4cd03ff8-89aa-4df1-8a72-60ef34e2bef9)
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/0d52e23f-da53-462d-87d0-2aa2bb6bb2ee)
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/cd512ce9-987b-4bbe-9e99-fe70ffb8c376)
+
+* While creating there is option for read only access in case of regional availability
+  * these will give you url for read only in case of unavailability of primary region.
+  * available for GRS and GZRS
 
 
 
