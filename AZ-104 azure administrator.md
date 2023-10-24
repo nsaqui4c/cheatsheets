@@ -292,6 +292,11 @@ Powershell and cli has different syntax for command, but they all follow same pa
   * We can move resource from one resource grp to another and one subscription to another or to another region
   * Moving them to other resource grp or subscription will change its resource id
 
+* Subscription and management group
+  * Management group is to manage multiple subscription
+  * We get all the bill on subscription, so it is logical to create separate subscription for different organization and department
+  * We use management grp to organize similar subscription
+    
 
 
 ===============================================================================================================
