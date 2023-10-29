@@ -1,4 +1,4 @@
-===============================COURSE MATERIAL================================
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/0bf61fba-9d9b-4093-9fde-d72bcfcd9d77)===============================COURSE MATERIAL================================
 https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/tree/master/Instructions/Labs
 ==============================================================================
 
@@ -453,6 +453,19 @@ Powershell and cli has different syntax for command, but they all follow same pa
 * Object Replication
   * copy blobs asynchronoulsy from source storage account to destination account
     ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/27ee2d29-2d2a-4bd7-b6f1-2dbb4ba9ad3d)
+
+#### Azure File share
+* We have special option for file share in premium disk
+* for standard storage we can create file share from left panel
+* We can see that premium file share is blocked, because we have created standard storage.
+
+
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/ba8d2cf3-2214-4d34-b3c1-076a2f457270)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/825fa35e-e97c-4ff1-a697-da038eacfde6)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/a7b630e3-8d30-48d1-9567-84322a99758f)
+
+
+
 
 ===============================================================================================================
 
