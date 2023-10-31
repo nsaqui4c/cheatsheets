@@ -458,20 +458,52 @@ Powershell and cli has different syntax for command, but they all follow same pa
 * We have special option for file share in premium disk
 * for standard storage we can create file share from left panel
 * We can see that premium file share is blocked, because we have created standard storage.
+* We can create backup also while creating file share
+* File share support SMB protocal and has real hierarichal (folder) structure.
+* We can connect all over VM to this SMB, so that all of them can access this same drive to share file
 
 
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/ba8d2cf3-2214-4d34-b3c1-076a2f457270)
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/825fa35e-e97c-4ff1-a697-da038eacfde6)
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/a7b630e3-8d30-48d1-9567-84322a99758f)
 
+#### Azure File sync
+* Helps you to sync your file from your local windows server to azure file share
+* Once creates we can download application(Azure file sync agent), which we need to install in local server and setup our sync.
+* once setup all of local server and azure file share will have latest data from all other server.
+
+#### Premium storage
+* while creating premium storage we get one more option to select the type of storage
+* We have only LRS and ZRS in premium storage.
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/62e46c2d-e943-4cde-8ba2-ad06bc1ffa5d)
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/9a9f6f3b-6d48-4e87-a35b-d669aca93926)
+
 
 
 
 ===============================================================================================================
+## Azure VM
 
 
+#### Networking
+* Every VM must belong to one Virtual network.
+* Subnet - we need to define subnet for our Virtual network. It defines total number of Ips this VN has.
+* We can assign public IP to VM also, if we want to access this VM from Internet
 
 
+#### Management
+* Microsoft Defender for cloud - security management and threat protection using azure basic free plan.
+* System assigned managed Identity - give identity to VM to assign and role to VM
+* Login with azure AD - RBAC role assignment
+* Auto shutdown - shutdown at specific time (no charges when VM is shut down)
+* backup
+* Site recovery - disaster recovery - enable sync with another cold site
+
+#### Monitoring
+* We cab enable recommneded alert rules (disk size, network traffic in and out etc). Every alert has some cost
+
+### Advanced
+* We can select an extension to install (backups agents, monitoring agents)
 ===============================================================================================================
 
 
