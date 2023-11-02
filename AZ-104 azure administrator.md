@@ -1,4 +1,4 @@
-![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/0bf61fba-9d9b-4093-9fde-d72bcfcd9d77)===============================COURSE MATERIAL================================
+===============================COURSE MATERIAL================================
 https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/tree/master/Instructions/Labs
 ==============================================================================
 
@@ -7,6 +7,8 @@ https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/tree/mas
 * New-AzResourceGroup -Name myrg -Locatoin EastUS
 * New-AzVm -Name azVm123345 -ResourceGroup myrg -Location EastUS
 * Invoke-AzVMRunCommand -ResourceGroupName 'myrg' -VMName 'azVm123345' -CommandId 'RunPowerShellScript' ScriptString 'Install-WindowsFeature -Name WebServer -IncludeManagementTools'
+* Stop-AzVM -ResourceGroupName 'myrg' -VMName 'azVm123345'
+* Start-AzVM -ResourceGroupName 'myrg' -VMName 'azVm123345'
 =================================================
  
 Here are some official Microsoft websites that you really should bookmark when studying for the AZ-104 exam:
@@ -471,6 +473,7 @@ Powershell and cli has different syntax for command, but they all follow same pa
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/ba8d2cf3-2214-4d34-b3c1-076a2f457270)
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/825fa35e-e97c-4ff1-a697-da038eacfde6)
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/a7b630e3-8d30-48d1-9567-84322a99758f)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/0bf61fba-9d9b-4093-9fde-d72bcfcd9d77)
 
 #### Azure File sync
 * Helps you to sync your file from your local windows server to azure file share
@@ -510,6 +513,12 @@ Powershell and cli has different syntax for command, but they all follow same pa
 ### Advanced
 * We can select an extension to install (backups agents, monitoring agents) 
 
+
+* Once VM is up we can run command also to make changes inside the VM
+  * Using powershell - connect to Azure and run Invoke command
+  * DIrectly from Azure portal using "Run Command" deom left panel
+* If we stop VM it get deallocated, hence we lose the IP.
+* We have option to stop without deallocation, this will keep the IP, but we will be charged even when VM is stopped
 #### VM Availability
 * We can set to replicate our VM in case of any disaster to recover from there.
 * Availability zone - Physically separate resource with Azure region
@@ -546,7 +555,8 @@ Powershell and cli has different syntax for command, but they all follow same pa
 * We can select multiple availability zone for redundancy
 * We have scaling policy here to select minimum and maximum VM to scale
 * We can define scale out and scale-in threshold to scale (max and min cpu utilization)
-* 
+
+
 
 
 ===============================================================================================================
