@@ -2,7 +2,12 @@
 https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/tree/master/Instructions/Labs
 ==============================================================================
 
-
+## Powershell Command
+* Connect-AzAccount
+* New-AzResourceGroup -Name myrg -Locatoin EastUS
+* New-AzVm -Name azVm123345 -ResourceGroup myrg -Location EastUS
+* Invoke-AzVMRunCommand -ResourceGroupName 'myrg' -VMName 'azVm123345' -CommandId 'RunPowerShellScript' ScriptString 'Install-WindowsFeature -Name WebServer -IncludeManagementTools'
+=================================================
  
 Here are some official Microsoft websites that you really should bookmark when studying for the AZ-104 exam:
 
@@ -503,7 +508,47 @@ Powershell and cli has different syntax for command, but they all follow same pa
 * We cab enable recommneded alert rules (disk size, network traffic in and out etc). Every alert has some cost
 
 ### Advanced
-* We can select an extension to install (backups agents, monitoring agents)
+* We can select an extension to install (backups agents, monitoring agents) 
+
+#### VM Availability
+* We can set to replicate our VM in case of any disaster to recover from there.
+* Availability zone - Physically separate resource with Azure region
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/05624e38-4cce-41c1-ba13-54cc9f3c74e5)
+
+* Virtual Machine scale set - Distribute VMs across zones and fault donains at scale
+* Availability set - Group two or more VMs in an availability set to ensure that at least one is available during planned or unplanned maintenance events
+  * We have to create availability set of 2 or more VMs to ensure atleast one is available.
+  * We can create availability set basis on two things
+    * Fault domain - VM in same fault domain share same power source and physical network switch - we can create multiple fault domain to separate VMs
+    * Update Domain - Virtual machines in the same update domain will be restarted together during planned maintenance.
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/85336e15-3f11-4000-a49c-656371f083a7)
+
+
+**We need to add Load Balancer manually in case of Availabiltiy zone and availability set**
+
+#### Resizing Azure VM
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/155fd798-d05b-41b4-857d-2af4f5839abd)
+
+
+#### Attaching additional disk
+* We can attach and remove disks from VM.
+* We can attach same disk to another VM to transfer data
+* Disk can be attached to single VM at a time.
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/4777085b-9b03-4367-9b24-08885a0e608a)
+
+
+#### Azure Bastion services
+* Most secure option to connect to our VM. We do not need to have public IP and port open to connect
+* We  have to create Bastion server with it own IP, and it will connect to your machine
+
+#### Virtual machine scale set (VMSS)
+* We can create VMSS from resources. This will create VM and scale them according to rule we define.
+* We can select multiple availability zone for redundancy
+* We have scaling policy here to select minimum and maximum VM to scale
+* We can define scale out and scale-in threshold to scale (max and min cpu utilization)
+* 
+
+
 ===============================================================================================================
 
 
