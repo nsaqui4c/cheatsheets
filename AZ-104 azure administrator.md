@@ -9,6 +9,8 @@ https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/tree/mas
 * Invoke-AzVMRunCommand -ResourceGroupName 'myrg' -VMName 'azVm123345' -CommandId 'RunPowerShellScript' ScriptString 'Install-WindowsFeature -Name WebServer -IncludeManagementTools'
 * Stop-AzVM -ResourceGroupName 'myrg' -VMName 'azVm123345'
 * Start-AzVM -ResourceGroupName 'myrg' -VMName 'azVm123345'
+* Remove-AzVm -ResourceGroupName 'myrg' -VMName 'azVm123345'
+* Remove-AzResourceGroup -Name 'myrg'
 =================================================
  
 Here are some official Microsoft websites that you really should bookmark when studying for the AZ-104 exam:
@@ -557,7 +559,16 @@ Powershell and cli has different syntax for command, but they all follow same pa
 * We can define scale out and scale-in threshold to scale (max and min cpu utilization)
 
 
+#### Creating custom VM image
+* Create a VM using base image provided by azure.
+* We need to generalize the VM by running Sysrep in windows serve. Once generalize, we cannot start this VM.
+* Now we have to click on capture in Azure VM page
+* Now we can see newly created image in browse all item -> My items in image page
 
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/436ec47e-8675-4df1-bc4b-da74b2066d39)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/32f58405-264c-45b4-a76f-413c133597c0)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/5569fcd2-dbbe-42ce-8037-8b95482ffee2)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/10cdaee9-ace8-4853-b2a8-528d65ed98bc)
 
 ===============================================================================================================
 
