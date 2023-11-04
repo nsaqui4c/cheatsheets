@@ -571,7 +571,27 @@ Powershell and cli has different syntax for command, but they all follow same pa
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/10cdaee9-ace8-4853-b2a8-528d65ed98bc)
 
 ===============================================================================================================
+#### Automate deployment of resources using Template
+* ARM Template - Azure resource manager
+  * Every ARM template contains 6 basics key value pairs.
+  ```js
+   {
+     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",  // fixed string
+     "contentVersion": "1.0.0.0",    // to track version
+     "parameters": {},               // are variables that we can pass to template
+     "variables" : {},               // variable which are coming from inside
+     "resources" : [],               // We can create arrays of resource using single ARM 
+     "outputs"   : {}                 
+  }
 
+  ```\
+* If we run the same arm template with same resource name, then it will skip those resources, which are currently exist in azure
+* We can deploy template using Azure portal - > template spec, but in this case we cannot upload parameter file, we have to manually fill the params.
+* We can also use Powershell to upload template and param file and deploy the resource.
+  ```
+  New-AzResourceGroupDeployment -ResourceGroupName "amarmdemo" -TemplateFile "template.json" -TemplateParameterFile "parameter.json"
+  ```
+**We can use Biceps and Terraform to automate also**
 
 
 
