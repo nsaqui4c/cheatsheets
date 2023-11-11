@@ -144,3 +144,26 @@ doHash();
 doHash();
 doHash();
 ```
+## Cluster in nodejs
+* Nodejs is by default dingle threaded.i.e it process will have one thread and that thread will have one event loop
+* If we have cpu intensive task running in server, then all the requests will be blocked
+* we can fork multiple instance of node process using cluster.
+* efficeinecy wise it will be better to have fork limited number of core.
+```js
+process.env.UV_THREADPOOL_SIZE=2
+const cluster = require('cluster')
+if (cluster.isMaster){
+cluster.fork()
+cluster.fork()
+}
+else{
+  const express = require('express')
+  const crypto = require('crypto')
+  const app = express()
+  app,get('/',(req.res)=>{
+    crypto.pbkdf2('a', 'b', 100000, 512, 'sha512', () => { //high compuatational task
+    res.send('Hi There')
+  })
+  app.listen(3000)
+}
+```
