@@ -144,7 +144,8 @@ doHash();
 doHash();
 doHash();
 ```
-## Cluster in nodejs
+## Improving Node performance
+#### Cluster in nodejs
 * Nodejs is by default dingle threaded.i.e it process will have one thread and that thread will have one event loop
 * If we have cpu intensive task running in server, then all the requests will be blocked
 * we can fork multiple instance of node process using cluster.
@@ -167,3 +168,10 @@ else{
   app.listen(3000)
 }
 ```
+**We Use pm2 to maintailn multiple cluster in prod**
+* pm2 start index.js -i 0
+  * -i 2 for 2 cluster
+  * -i 0 will check and create suitable number of cluster automatically
+
+#### Worker threads
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/f71206d9-cd93-4021-94da-bc348de83bbd)
