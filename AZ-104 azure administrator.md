@@ -596,6 +596,19 @@ Powershell and cli has different syntax for command, but they all follow same pa
 
 
 ===============================================================================================================
+## Azure Kuberntes services AKS
+* creating AKS cluster is similar to creating any other resource
+* While creating we can choose our networking type, nodepool, resourcegroup etc
+* NODEPOOL  -> this is actually number of vms that we want to run under this cluster
+  * we can also set to scaleup and down nodepool depending upon load
+  * aks will automatically allot the container to different pool to maintain performance
+ * AKS will also create loadbalancer to divert load to different pool
+ * We can choose the load balancer IP to be public so that we can access the services via internet
+ * We can also add PVC (Persistent volume claim) to pods to create persisted data
+ * We cannot Azure disks (managed disk) because we can attach this to only one pod. We cannot share data between multiple pod
+ * Azure files, azure blob can be used for this
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/b722b470-6d2f-42ad-be3c-a6db60eb9e02)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/5eb49f4c-9fc6-4bae-8651-b9484bd8654d)
 
 
 
