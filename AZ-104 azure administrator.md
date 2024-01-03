@@ -717,8 +717,16 @@ is just modify the settings that go along with the image.
 }
 ```
   ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/302a8aaa-1f15-42fc-a53f-891d34f9284b)
-*
 
+#### Azure Container Apps
+* In between AKS and ACI
+* We can set min max replica to scale the application
+* We have control over ingress to allow public access or not etc
+* We can multiple container images, they will run as pod and scale together
+
+#### Azure container Registry (ACR)
+* private repo to store docker images
+* We can see the images in repositories menu in left side
 
 
 ===============================================================================================================
