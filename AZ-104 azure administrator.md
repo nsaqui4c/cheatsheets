@@ -611,10 +611,113 @@ Powershell and cli has different syntax for command, but they all follow same pa
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/5eb49f4c-9fc6-4bae-8651-b9484bd8654d)
 
 
-
-
 ===============================================================================================================
+## Azure Container Instances and Container Apps
+The concept of a container is that you're gonna take a piece of code, and you are going to package it including all of its dependencies, everything
+that it needs to run in one image, and then you can deploy that image to development, to staging, to production whether it's Azure or AWS
+or Google Cloud or in a VM or anywhere that you want to deploy it, that image is unmodified to being deployed everywhere it goes, all you need to do
+is just modify the settings that go along with the image.
 
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/81908e91-ea54-41fa-9c5d-fb1b394201c6)
+
+* Kubernetes is one of the container service tha Azure provide. It contains cluster of server and it is highly scalable.
+* Azure Container Instance (ACI) is simpler and cheaper and runs on only one node.
+* We also have container apps, which has simplicity of container Instance but with more control/feature
+
+#### Azure Container Instance (ACI)
+* quick simple and cheap
+* no scaling
+* we can deploy docker image here, but cannot control number of pod etc
+* if we want to scale, we have to create new ACI with more cpu and memory
+* We can create container group to run multiple pod in same host
+* We cannot create container grp from portal, we have to use command prompt for this
+```json
+  {
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "containerGroupName": {
+      "type": "string",
+      "defaultValue": "myContainerGroup",
+      "metadata": {
+        "description": "Container Group name."
+      }
+    }
+  },
+  "variables": {
+    "container1name": "aci-tutorial-app",
+    "container1image": "mcr.microsoft.com/azuredocs/aci-helloworld:latest",    //image 1
+    "container2name": "aci-tutorial-sidecar",
+    "container2image": "mcr.microsoft.com/azuredocs/aci-tutorial-sidecar"      // image 2
+  },
+  "resources": [
+    {
+      "name": "[parameters('containerGroupName')]",
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2019-12-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "containers": [
+          {
+            "name": "[variables('container1name')]",
+            "properties": {
+              "image": "[variables('container1image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              },
+              "ports": [
+                {
+                  "port": 80     //image 1 port
+                },
+                {
+                  "port": 8080
+                }
+              ]
+            }
+          },
+          {
+            "name": "[variables('container2name')]",
+            "properties": {
+              "image": "[variables('container2image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              }
+            }
+          }
+        ],
+        "osType": "Linux",
+        "ipAddress": {
+          "type": "Public",
+          "ports": [
+            {
+              "protocol": "tcp",                       //image 2 port
+              "port": 80
+            },
+            {
+                "protocol": "tcp",
+                "port": 8080
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "containerIPv4Address": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', parameters('containerGroupName'))).ipAddress.ip]"
+    }
+  }
+}
+```
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/302a8aaa-1f15-42fc-a53f-891d34f9284b)
+*
 
 
 
