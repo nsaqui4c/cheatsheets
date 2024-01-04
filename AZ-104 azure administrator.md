@@ -730,12 +730,34 @@ is just modify the settings that go along with the image.
 
 
 ===============================================================================================================
+## Manage Virtual Network
 
+* We can select region while creating Vnet
+ * This add restriction to resource which we are going to add inside this vnet
+ * all resources needed to be in same region to be part of the vnet
+* While creating vnet we will recieve private IP address space, and accordingly we can specify subnet under it
+  * 10.0.0.0/16 -> we have range 10.0.0.0 to 10.0.255.255  (256*256 = 65536)
+  * 10.0.0.0/24 -> range 10.0.0.0 - 10.0.0.255  (256 address)
+* Vnet are free , but we have limited numner of vnet that we can create around 2 to 3 hundreds
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/2643d22c-87bc-4121-b5a2-3b75547c2982)
+
+
+**A NAT gateway is recommended for outbound internet access from subnets. Edit the subnet to add a NAT gateway.**
+A NAT gateway is a Network Address Translation (NAT) service. You can use a NAT gateway so that instances in a private subnet can connect to services outside your VPC (Virtual private cloud)but external services cannot initiate a connection with those instances.
+
+In the context of virtual networking, a peered virtual network address space refers to the ability to connect two or more virtual networks in Azure, allowing them to communicate with each other securely.
+
+When you create multiple virtual networks (VNets) within an Azure subscription, they are isolated by default and cannot communicate with each other. Network peering enables seamless connectivity between these VNets. When two VNets are peered, they appear as one network, allowing resources within those VNets to communicate as if they were on the same network, despite being in different regions or subscriptions.
 
 
 
 ===============================================================================================================
-
+## Public IP address
+* We can create new public IP adress using market place -> public IP address
+* Public IP address are charged on hourly basis
+* We have option for static and dynamic IPaddress
+* If we purchase dynamic IP, we reserve One IP with domain name we enterd but it is not assigned to that domain untill we assigned IP to any resource.
+* IP are assigned only to Network Interface Card (NIC) or Load Balancer
 
 
 
