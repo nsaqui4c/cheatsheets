@@ -759,10 +759,24 @@ When you create multiple virtual networks (VNets) within an Azure subscription, 
 * If we purchase dynamic IP, we reserve One IP with domain name we enterd but it is not assigned to that domain untill we assigned IP to any resource.
 * IP are assigned only to Network Interface Card (NIC) or Load Balancer
 
-
+**To allow VM to public IP -> connect VM's NIC to VNET. Allow public access from VNET. assign public IP to NIC**
+**We can create firewall and attach it to VNET and give firewall a public IP to add firewall to VNET.**
 
 ===============================================================================================================
+## UDR (User defined Route)  (Route table)
+* We can create route table from resources
+* Associate the route table with VNET subnet (subnet -> select VNET -> slect subnet)
+* To create rules go to Routes(left panel) -> enter name-> IP address -> and next Hop
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/a2f81782-3be6-410f-83b1-c36fec7e1d3f)
+* Internet -> default
+* None -> blocking the traffic within subnet
+* Virtual appliance -> In this case we can enter IP of another resource (Firewall)
 
+
+
+* Route table
+* 0.0.0.0/0 -> all IPs
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/90e568b2-d93d-4b0a-9558-bde33e520416)
 
 
 
