@@ -790,7 +790,8 @@ When you create multiple virtual networks (VNets) within an Azure subscription, 
     ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/8d724a40-a219-4b3b-9388-6687406f026a)
 
   * Application rule - allows access to domain name
-  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/38c98db3-1d5b-4678-a416-7b1441fae0b0)
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/36826193-c281-40fe-b7be-b0c955c3377f)
+
 
 
 
