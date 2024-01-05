@@ -751,7 +751,7 @@ When you create multiple virtual networks (VNets) within an Azure subscription, 
 
 
 
-===============================================================================================================
+
 ## Public IP address
 * We can create new public IP adress using market place -> public IP address
 * Public IP address are charged on hourly basis
@@ -762,7 +762,7 @@ When you create multiple virtual networks (VNets) within an Azure subscription, 
 **To allow VM to public IP -> connect VM's NIC to VNET. Allow public access from VNET. assign public IP to NIC**
 **We can create firewall and attach it to VNET and give firewall a public IP to add firewall to VNET.**
 
-===============================================================================================================
+
 ## UDR (User defined Route)  (Route table)
 * We can create route table from resources
 * Associate the route table with VNET subnet (subnet -> select VNET -> slect subnet)
@@ -797,7 +797,91 @@ When you create multiple virtual networks (VNets) within an Azure subscription, 
 
 
 ===============================================================================================================
+## Virtual WAN
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/732e1495-a45a-4ba0-80ae-f54c36246fb7)
+* We can create WAN from resources
+* We will incur only when we associate HUN to wan
 
+
+===============================================================================================================
+## Implement and manage virtual networking
+#### Vnet Peering
+* By default resources in VNET1 doesnot have access to resource in VNET2
+* Peering is concept of setting up relation ship in two vnet such that they can recognise each other.
+* To setup peering address range should not be over lapping
+  * vnet1 -> 10.0.0.0/16  -> 10.0.0.0 - 10.0.255.255
+  * vnet2 -> 10.1.0.0/16  -> 10.1.0.0 - 10.1.255.255
+* To add peering -> go to any vnet-> peering -> add peering
+  **HOPPING SPOKE MODEL OF NETWORK TOPOLOGY- create one vnet which has peering with all other vnet. Now we don't to create peering with all of them.**
+  select traffic forwarded from remote for hopping model
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/0523e739-0d7a-4adf-8b01-6870de20fd1f)
+
+  If you want to peer with VNET from another subscription than you can do this by entering resource ID
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/a94dadf7-03cf-4c67-b9ca-6ab43fbec65f)
+
+* For peering to work, NSG and firewall should allow the network call.
+* Vnet peering will incur cost for data transfering
+* 0.01 per GB for inbound  and 0.01 per GB for outbound. Means transferring from 1 vnet to another cost 0.02
+#### Global Peering
+* If we want to peer with Vnet which is in different region.
+* Global peering charges are much higher
+
+#### Azure to Azure virtual network gateway
+* Another way to allow traffic between two vnet
+* Traffic cost is less but we have to pay for gateway on per hour basis
+* Incoming traffic is free
+* virtual network gateway is also the device use when we want to setup a VPN
+  * Site to site  - onpremise to azure - we need to add virtual network gateway at azure and physical network gateway at corporate side.
+  * Point to site
+* to add virtual network gateway (we need to do same thing in both the vnet)
+  * create gateway subnet -> vnet-subnet-add gateway subnet
+  * create new resource - virtual network gateway
+    * region will be same as your gateway
+    * sku - diffrent type of gateway - bandwidth, connection limit - cost high for better gateway
+      ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/d5187746-ef56-4ebe-b3c7-d9b238f12c6b)
+* go to first gateway -> connection -> Add -> enter details
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/2ddb93c9-9b57-4617-a2a7-a827205053c2)
+* create connection from gateway too  (shared key should be same as what we entered in first gateway)
+* To create gateway cross subscription we need to use powershell. Option not present in portal
+  
+===============================================================================================================
+## Configuring Name Resolution
+* There are 3 option for Domain name resolution
+  * Azure provided DNS (default)
+  * You provide DNS (run your own DNS server)
+  * Azure private DNS
+DNS help us to recognise our server using familar name instead of remembering their IP
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/ca1e012a-52b2-4451-95a2-21c218091476)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/751be520-bda9-46cd-8f71-3efa3e18f553)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/f68afa4d-75ca-459a-82d8-6f3c6f80367f)
+
+* In Resources there are two DNS Zones
+  * DNS zones  -> you have buy and register in public registry- Internet accessible
+  * Private DNS zones -> Internal to azure only
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/695e9630-87fc-4301-a978-063f4c13829e)
+
+* TO add DNS to vnet -> go to your DNS -> Virtual network link -> add -> select your Vnet (select autoregister to see all resource in the vnet in DNS page)
+* Now if we have two vms in same vnet, it will be visible to us, and we can give them subdomain (db.devserver.local) name to access
+* ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/77f983dc-2483-4b85-a6d4-3a35d17e0435)
+
+
+
+
+===============================================================================================================
+
+
+
+
+===============================================================================================================
+
+
+
+
+===============================================================================================================
+
+
+
+===============================================================================================================
 
 
 
