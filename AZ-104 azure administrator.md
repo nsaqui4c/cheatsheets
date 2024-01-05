@@ -868,6 +868,31 @@ DNS help us to recognise our server using familar name instead of remembering th
 
 
 ===============================================================================================================
+## Secure access to virtual network
+
+#### NSG (Network security group)
+
+* Filter that either allow or denies traffic travel over the network to reach their destination
+* It block a subnet
+* We can associate NSG to multiple subnet
+* NSG can also be applied to Network Interfce card (NIC)
+* It is a free resource
+* When we create NSG, it comes with default set of rules (Inbound and Outbound rules).
+* We cannot remove this rules, but we can create rule with higher priority to override it. (1 being highest)
+* ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/3be5296d-0001-4808-b7e7-f572d6220309)
+* We can add NSG to subnet - Vnet-> subnet-> select subnet-> NSG -> select NSG you want to select.
+* We can add NSG to NIC -> Network security group -> select your NSG
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/e7f34a46-dba5-4ddb-a1c7-2d5452527d18)
+
+
+#### Application security group
+* In NSG instead of choosing any NSG If we choose specific IP
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/843b4951-1907-46b8-a53d-b0d9c39b4342)
+* But managing this will be difficult, therefore we can create application Security group (an abstraction that will contain multiple IP)
+* resource -> ASG-> create ->
+* Now in NSG instead of choosing Ip we can select this ASG
+* We need to add this ASG in VM also from networking
+ ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/e1f36e2e-d7a2-4883-8ddf-086124408512)
 
 
 
