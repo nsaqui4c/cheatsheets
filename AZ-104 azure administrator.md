@@ -779,6 +779,21 @@ When you create multiple virtual networks (VNets) within an Azure subscription, 
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/90e568b2-d93d-4b0a-9558-bde33e520416)
 
 
+* Now we have VM connected to NIC under VNET subnet and we have route table with rule that any IP within this subnet will go to Firewall first.
+#### Firewall Rule
+* There are 3 types of rule:
+  * Nat rule  -> Incoming trafic -(TCP/UDP) -destination address will be public IP of firewall - translated address-> VM private address
+  * Now VM will be access through Firewall IP
+    ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/bd21e8a0-e099-4448-b6bc-48278efebe19)
+
+  * Network Rule - Outbound traffic - allow traffic from source to given Destination IP
+    ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/8d724a40-a219-4b3b-9388-6687406f026a)
+
+  * Application rule - allows access to domain name
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/38c98db3-1d5b-4678-a416-7b1441fae0b0)
+
+
+
 
 ===============================================================================================================
 
