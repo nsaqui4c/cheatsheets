@@ -2,6 +2,12 @@
 https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/tree/master/Instructions/Labs
 ==============================================================================
 
+
+===============================QUICK START TEMPLATE================================
+https://github.com/Azure/azure-quickstart-templates
+==============================================================================
+
+
 ## Powershell Command
 * Connect-AzAccount
 * New-AzResourceGroup -Name myrg -Locatoin EastUS
@@ -882,7 +888,7 @@ DNS help us to recognise our server using familar name instead of remembering th
 * ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/3be5296d-0001-4808-b7e7-f572d6220309)
 * We can add NSG to subnet - Vnet-> subnet-> select subnet-> NSG -> select NSG you want to select.
 * We can add NSG to NIC -> Network security group -> select your NSG
-  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/e7f34a46-dba5-4ddb-a1c7-2d5452527d18)
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531 263/e7f34a46-dba5-4ddb-a1c7-2d5452527d18)
 
 
 #### Application security group
@@ -895,10 +901,29 @@ DNS help us to recognise our server using familar name instead of remembering th
  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/e1f36e2e-d7a2-4883-8ddf-086124408512)
 
 
-
-
 ===============================================================================================================
+## Load Balancing
 
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/445eff67-1822-4080-ab64-b36532e4c34b)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/2ecf6e21-99db-4c23-92b4-cf7016957b22)
+![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/5ab9b5ac-763e-498f-b72c-aeb430512d4d)
+* We can create load balancer for private IP (balancing traffic coming from internal) or with public IP
+* We can add Vms in backend pool to load balance it
+* basic SKU only suppport NIC but standard SKU support IP of VM to add in backend pool
+* We can also add health probe to check and figure whether the machine is working or not, accordingly traffic will be diverted there.
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/aba571ab-a1fd-4fe2-9200-75842c5ba409)
+ 
+* We can also add rule balancing rule from left menu
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/10419bbe-eae7-4bec-bd44-f1e58846d95c)
+
+**Azure load balancer is layer 4 LB. It understand IP and port and protocol type but it doesnot undestand url**
+* We can create application gateway. It is a layer 7 LB and understand URL.
+* With LB we can also have WAF (web firewall) in application gateway
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/77698be6-b116-417c-8e69-8673d8614712)
+* Application gateway will reside inside a vnet.
+* In application gateway we can set multiple option in backend pool
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/7108adda-2c57-4448-9a63-15c58e69364a)
+  
 
 
 
