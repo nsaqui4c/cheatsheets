@@ -928,7 +928,21 @@ DNS help us to recognise our server using familar name instead of remembering th
 
 
 ===============================================================================================================
-
+## Monitoring and troubleshooting Virtual network
+#### Network warcher
+* Monitoring Tool
+ * Topology ->  select subscription -> resource group -> vnet to see its topology
+ * Connection monitor tool -> two check connection and data flow between two resource
+ * Network performance monitor -> legacy tool, not used now
+   
+* Diagnostic tools
+  * IP flow verify  -> to check IP flow between two IP
+  * NSG diagnostic -> check traffic through NSG
+  * Next HOP -> gives next hop from VN to destination IP
+  * Effective security rule -> provides you effective security rule for given resource
+  * VPN troublesjoot -> helps you to check traffic in VPN
+  * Packet capture -> capture packet, coming in and out of VM
+  * Connection troubleshoot -> provide capability to check a direct TCP connection from VM to VM, FQDn,URI, or IP
 
 
 ===============================================================================================================
