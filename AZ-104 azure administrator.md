@@ -472,6 +472,8 @@ Powershell and cli has different syntax for command, but they all follow same pa
    * budget - we can assign our budget and create alert based on it. alert can be set once any certain percentage of budget reached.
    * Advisor recommendation - Gives recommendation for cost management
  * Resource Lock
+   * You can associate the lock with a subscription, resource group, or resource.
+   * Locks are inherited by child resources
    * We can create lock on resource grp or resource
    * Only owner has access to delete the locks
    * Unless locks are deleted we cannot modify or delete resource.
