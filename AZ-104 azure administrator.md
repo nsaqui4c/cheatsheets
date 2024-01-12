@@ -435,6 +435,10 @@ Powershell and cli has different syntax for command, but they all follow same pa
      ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/82657351-5297-44ae-b448-1d274c587b27)
 
 #### Resource group scope
+* Resources can only exist in one resource group.
+* Resource Groups cannot be renamed.
+* Resource Groups can have resources of many different types (services).
+* Resource Groups can have resources from many different regions.
 * We can create multiple resource group and create resources under them
    * A tenant -> multiple subscription -> multiple resource grp -> multiple resource
 * we can go to IAM in specific resource grp -> role assignment -> add new user with roles to that specific resource grp
