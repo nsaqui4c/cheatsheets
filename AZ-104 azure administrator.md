@@ -310,6 +310,13 @@ Powershell and cli has different syntax for command, but they all follow same pa
 #### chosing a subscription using CLI
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/0267b1c2-e4ec-4bbb-b9c6-fc9dd0deee05)
 ===================================================================================================================================================
+## Microsoft Entra and services
+* MS Entra is family of multicloud identity and network access solution
+* It is suit of product which helps organization manage and secure access to their application, data and resources.
+  ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/82205fda-a6c9-44d6-ab61-7e35be8f6858)
+
+
+
 ## Azure active directory
 * Azure active directory in not duplicate of windows active directory
 * It is use for identity and access management in cloud.
