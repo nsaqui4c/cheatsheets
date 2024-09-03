@@ -366,6 +366,49 @@ const MediumClap = ({animate}) => {
   export default withClapAnimation(MediumClap)
 
 ```
+* function based HOC -> HOC which logs component mounting and unmountin
+```js
+import React, { useEffect } from 'react';
+
+function withLogging(WrappedComponent) {
+  return function WithLoggingComponent(props) {
+    useEffect(() => {
+      console.log(`Component ${WrappedComponent.name} mounted`);
+      
+      return () => {
+        console.log(`Component ${WrappedComponent.name} will unmount`);
+      };
+    }, []);
+
+    // Render the wrapped component with all its props
+    return <WrappedComponent {...props} />;
+  };
+}
+
+export default withLogging;
+```
+```js
+import React from 'react';
+import withLogging from './withLogging';
+
+function Button(props) {
+  return <button>{props.label}</button>;
+}
+
+// Wrap the Button component with the withLogging HOC
+const ButtonWithLogging = withLogging(Button);
+
+function App() {
+  return (
+    <div>
+      <ButtonWithLogging label="Click Me" />
+    </div>
+  );
+}
+
+export default App;
+
+```
 
 	
 ## Hooks
