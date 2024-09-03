@@ -253,18 +253,41 @@ Although a <div> is used to encapsulate multiple routes inside the Router. The â
 ```
 
 * Controlled and uncontrolled component
+* Controlled Components
+Controlled components are React components that store their form data (input values) in the component's state. The React state is the single source of truth for the input values, and any changes to the input are reflected in the state.
+	* Key Characteristics:
+		* The value of the input element is controlled by the React state.
+		* The component re-renders every time the state changes.
+		* You can easily control and validate the input data before it is submitted.
+* Uncontrolled Components
+	* Uncontrolled components rely on the DOM to manage their own state, rather than storing the value in the React state. In uncontrolled components, you use refs to access the input values directly from the DOM.
+
+	* Key Characteristics:
+		* The value of the input element is controlled by the DOM, not by the React state.
+		* The component does not re-render when the input value changes.
+		* Useful when you need to integrate with non-React code or when you don't need to track the input state in React.
 ```
 A Controlled Component
-	is one that takes its current value through props and notifies changes through callbacks like onChange. A parent component "controls" it by handling the callback and managing its own state and passing the new values as props to the controlled component. You could also call this a "dumb component".
+	is one that takes its current value through props and notifies changes through callbacks like onChange.
+	The component "controls" it by handling the callback and managing its own state and passing the new values as props to the controlled component.
 A Uncontrolled Component
 	is one that stores its own state internally, and you query the DOM using a ref to find its current value when you need it. This is a bit more like traditional HTML.
 Most native React form components support both controlled and uncontrolled usage:
 
 // Controlled:
-<input type="text" value={value} onChange={handleChange} />
+<input type="text" value={name} onChange={handleChange} />
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(`Submitted Name: ${name}`);
+  };
 
 // Uncontrolled:
+const inputRef = useRed(null)
 <input type="text" defaultValue="foo" ref={inputRef} />
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(`Submitted Name: ${nameRef.current.value}`);
+  };
 // Use `inputRef.current.value` to read the current value of <input>
 ```
 * 	PropTypes and defaultProps
