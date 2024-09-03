@@ -35,5 +35,8 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4
 }
 ```
 * Signature
-  * To create the signature part you have to take the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that.
+* This 3rd party is the security
+* this hash is created by hashing, header and payload with a secret key(stored in server).
+* Even if hacker can get payload and header, they cannot create same signature without having secret key
+  * To create the signature part you have to take the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that using the secret.
  
