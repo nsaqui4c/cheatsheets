@@ -913,6 +913,44 @@ export const addNoteReducer=(state={},data)=>{
 * useCallback -> to memotize a function
 * useMemo -> to memotize a value
 
+## Extras
+#### event.target and event.currentTarget
+* event.target
+Definition: event.target refers to the element that actually triggered the event. It is the deepest element in the DOM hierarchy that the event originated from.
+Use Case: It is useful when you need to know exactly which element the user interacted with, especially in cases where events are delegated (i.e., multiple elements share a single event handler).
+Example: If you have an event listener attached to a parent element, but the event was triggered by a child element, event.target will refer to the child element.
+* event.currentTarget
+Definition: event.currentTarget refers to the element to which the event handler is attached. It represents the element currently processing the event.
+Use Case: It is useful when you want to refer to the element that the event handler is bound to, regardless of which child element was clicked.
+Example: If the event handler is attached to a parent element, event.currentTarget will always refer to that parent element, even if a child element was clicked.
+```js
+import React from 'react';
+
+function MyComponent() {
+  const handleClick = (event) => {
+    console.log('Target:', event.target);
+    console.log('Current Target:', event.currentTarget);
+    console.log('Target Value:', event.target.value);
+    console.log('Current Target Value:', event.currentTarget.value);
+  };
+
+  return (
+    <div onClick={handleClick}>
+      <button value="Button Value">Click Me</button>
+    </div>
+  );
+}
+export default MyComponent;
+//output
+//Target: <button value="Button Value">Click Me</button>
+//Current Target: <div>...</div>
+//Target Value: "Button Value"
+//Current Target Value: undefined
+```
+
+* Scenario: Clicking the Button
+* event.target will be the <button> element because that’s the element the user clicked on.
+* event.currentTarget will be the <div> element because that’s the element to which the handleClick event handler is attached.
 
 
 ## Links
