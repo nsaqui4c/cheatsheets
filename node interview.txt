@@ -484,6 +484,59 @@ This keyword:
 	ARROW FUNC:
 		this is bound to enclosing scope at creation time and cannot be changed
 
+* Array function which return new array
+Map
+filter
+slice    - splice modify the exixting array
+reduce
+concat  - Purpose: Merges two or more arrays into a new array.
+flat
+flatMap
+keys
+values
+enteries
+from
+==============================
+const arr = ['a', 'b', 'c'];
+const keys = Array.from(arr.keys());
+console.log(keys); // Output: [0, 1, 2]
+const values = Array.from(arr.values());
+console.log(values); // Output: ['a', 'b', 'c']
+const entries = Array.from(arr.entries());
+console.log(entries); // Output: [[0, 'a'], [1, 'b'], [2, 'c']]
+
+
+const str = 'hello';
+const arr = Array.from(str);
+console.log(arr); // Output: ['h', 'e', 'l', 'l', 'o']
+
+const arr = [1, 2, 3, 4];
+const reducedArr = arr.reduce((acc, val) => acc.concat(val * 2), []);
+console.log(reducedArr); // Output: [2, 4, 6, 8]
+console.log(arr); // Output: [1, 2, 3, 4]
+
+
+======================================
+
+* sort modify the existing array
+function sortDescending(arr) {
+    return arr.sort((a, b) => {
+        if (a > b) {
+            return -1; // a should come after b
+        } else if (a < b) {
+            return 1; // a should come before b
+        } else {
+            return 0; // a and b are equal
+        }
+    });
+}
+
+// Example usage:
+const arr = ["apple", "orange", "banana", "grape"];
+const sortedArr = sortDescending(arr);
+
+console.log(sortedArr); // Output: ['orange', 'grape', 'banana', 'apple']
+
 
 
 Session vs localStorage
