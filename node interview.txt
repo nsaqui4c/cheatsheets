@@ -350,6 +350,27 @@ arr.__proto__ = Array.protoype  => extended from array and array is extended fro
 
 
 
+WeakMap
+
+Purpose: A WeakMap is a collection of key-value pairs where the keys are weakly referenced, meaning that if there are no other references to the key object, the key-value pair can be garbage collected. This prevents memory leaks in scenarios where you want to associate some data with an object but don’t want to prevent the object from being garbage collected.
+Key Features:
+	•	Keys must be objects: Unlike a regular Map, where keys can be any value, in a WeakMap, keys must be objects. Primitive data types (like numbers, strings, etc.) are not allowed as keys.
+	•	Garbage Collection: If no other references to the key exist, the key-value pair will be removed from the WeakMap by the garbage collector.
+	•	No Iteration: You cannot iterate over a WeakMap or get its size because the entries are not enumerable.
+
+```js
+const weakMap = new WeakMap();
+
+let obj = { name: "Alice" };
+weakMap.set(obj, "Developer");
+
+console.log(weakMap.get(obj)); // Output: Developer
+
+obj = null; // Now obj is eligible for garbage collection
+
+// After garbage collection, the weakMap entry for obj is gone
+```
+
 IIFE ->immediatly invoked function expression
 	(function (){ 
 	// Function Logic Here. 
