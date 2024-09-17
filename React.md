@@ -409,7 +409,58 @@ function App() {
 export default App;
 
 ```
+* Another example of HOC for conditional rendering
+```js
+import React from 'react';
 
+function withAuth(WrappedComponent) {
+  return function EnhancedComponent(props) {
+    const { isAuthenticated } = props;
+
+    if (isAuthenticated) {
+      return <WrappedComponent {...props} />;
+    } else {
+      return <div>Please log in to access this page.</div>;
+    }
+  };
+}
+////////////
+
+function Dashboard() {
+  return <div>Welcome to the Dashboard!</div>;
+}
+
+///////////////
+import React from 'react';
+
+function withAuth(WrappedComponent) {
+  return function EnhancedComponent(props) {
+    const { isAuthenticated } = props;
+
+    if (isAuthenticated) {
+      return <WrappedComponent {...props} />;
+    } else {
+      return <div>Please log in to access this page.</div>;
+    }
+  };
+}
+
+///////////////
+const DashboardWithAuth = withAuth(Dashboard);
+
+function App() {
+  const userIsAuthenticated = true; // Change this to false to test the unauthenticated state
+
+  return (
+    <div>
+      <DashboardWithAuth isAuthenticated={userIsAuthenticated} />
+    </div>
+  );
+}
+
+export default App;
+
+```
 	
 ## Hooks
 
