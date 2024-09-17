@@ -1018,6 +1018,11 @@ export default MyComponent;
 * event.target will be the <button> element because that’s the element the user clicked on.
 * event.currentTarget will be the <div> element because that’s the element to which the handleClick event handler is attached.
 
+* Use of ref
+  * In case we are entering value in form and submitting the data.
+  * In this scenario, we do need to save the data in state, and update page on every input
+  * We can directly use ref to pass the data to submit action.
+  * This will save a lot of re-render
 
 ## Links
 
