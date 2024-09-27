@@ -175,3 +175,50 @@ else{
 
 #### Worker threads
 ![image](https://github.com/nsaqui4c/cheatsheets/assets/45531263/f71206d9-cd93-4021-94da-bc348de83bbd)
+
+
+## Event loop
+
+In Node.js (and browsers), JavaScript runs in a single thread. This means only one piece of code is executed at a time. The event loop is the mechanism that decides what to run next, ensuring that tasks like handling I/O or timers don’t block other code from running.
+
+	•	The event loop constantly checks the **call stack** to see if it’s empty.
+	•	If it’s empty, it looks at the **task queue** (also known as callback queue) to execute any pending tasks (like a completed I/O operation).
+	•	If the task queue is empty, it checks the **microtask queue** for tasks that need to be handled immediately (like promise resolutions).
+
+
+The call stack is where JavaScript keeps track of what functions are currently running. Whenever a function is called, it’s pushed onto the stack. When the function finishes, it’s popped off.
+
+When you use asynchronous operations like setTimeout, fetch, or any I/O operation, the callback is placed in the Task Queue. The event loop picks up these callbacks once the call stack is empty.
+
+Promises use the Microtask Queue, which is processed immediately after the current function execution completes and before the next task from the Task Queue.
+Node.js has a special API, process.nextTick, which schedules callbacks to run before anything in the Microtask Queue. This gives it a higher priority over promises.
+
+```js
+console.log('Start');
+
+setTimeout(() => {
+  console.log('setTimeout');
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log('Promise 1');
+}).then(() => {
+  console.log('Promise 2');
+});
+
+process.nextTick(() => {
+  console.log('nextTick');
+});
+
+console.log('End');
+```
+	1.	“Start” is printed.
+	2.	setTimeout is scheduled in the Task Queue.
+	3.	Promise .then() callbacks are scheduled in the Microtask Queue.
+	4.	process.nextTick() is scheduled with higher priority than even the Microtask Queue.
+	5.	“End” is printed.
+	6.	process.nextTick runs, printing “nextTick”.
+	7.	The first Promise handler runs, printing “Promise 1”, followed by the second Promise handler, printing “Promise 2”.
+	8.	Finally, setTimeout runs, printing “setTimeout”.
+
+ 
