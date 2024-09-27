@@ -221,4 +221,143 @@ console.log('End');
 	7.	The first Promise handler runs, printing “Promise 1”, followed by the second Promise handler, printing “Promise 2”.
 	8.	Finally, setTimeout runs, printing “setTimeout”.
 
- 
+## Streams and Buffer
+1. Streams Overview
+
+A stream is a continuous flow of data that can be read or written incrementally. Streams are particularly useful for handling data from sources like files, network requests, or databases, where you don’t need to load all the data into memory at once.
+
+Streams come in four types:
+
+	1.	Readable Streams: Data flows into your program.
+	2.	Writable Streams: Data flows out of your program.
+	3.	Duplex Streams: Can be both readable and writable (e.g., sockets).
+	4.	Transform Streams: Special duplex streams where the output is a modified version of the input (e.g., compression, encryption).
+
+2. Buffers Overview
+
+In Node.js, streams work with buffers to handle data. A buffer is a temporary storage area for data being transferred from one place to another. Buffers handle binary data, not just strings.
+
+	•	Buffers are useful when dealing with binary data (like images, audio, etc.).
+	•	Node.js provides the Buffer class, which allows you to manipulate binary data directly.
+
+
+STREAMS  CODE
+```js
+const fs = require('fs');
+
+const readableStream = fs.createReadStream('example.txt', {
+  encoding: 'utf8',
+  highWaterMark: 16 // Read in 16-byte chunks
+});
+
+readableStream.on('data', (chunk) => {
+  console.log('Received chunk:', chunk);
+});
+
+readableStream.on('end', () => {
+  console.log('Finished reading the file');
+});
+
+
+// WRITEABLE STREAM
+const fs = require('fs');
+
+const writableStream = fs.createWriteStream('output.txt');
+
+writableStream.write('Hello, world!\n');
+writableStream.write('This is a writable stream example.\n');
+writableStream.end(); // Signal that no more data will be written
+
+writableStream.on('finish', () => {
+  console.log('Finished writing to the file');
+});
+
+//DUPLEX
+
+const { Duplex } = require('stream');
+
+const duplexStream = new Duplex({
+  read(size) {
+    this.push('Data from Duplex Stream');
+    this.push(null); // No more data
+  },
+  write(chunk, encoding, callback) {
+    console.log(`Received chunk: ${chunk.toString()}`);
+    callback(); // Acknowledge that the chunk was processed
+  }
+});
+
+duplexStream.on('data', (chunk) => {
+  console.log(`Reading: ${chunk.toString()}`);
+});
+
+duplexStream.write('Writing to Duplex Stream');
+duplexStream.end();
+
+// Transform
+const { Transform } = require('stream');
+
+const transformStream = new Transform({
+  transform(chunk, encoding, callback) {
+    const upperCaseChunk = chunk.toString().toUpperCase();
+    this.push(upperCaseChunk);
+    callback(); // Continue processing
+  }
+});
+
+process.stdin.pipe(transformStream).pipe(process.stdout);
+
+
+// PIPING STREAM
+const fs = require('fs');
+
+const readableStream = fs.createReadStream('input.txt');
+const writableStream = fs.createWriteStream('output.txt');
+
+readableStream.pipe(writableStream);
+
+readableStream.on('end', () => {
+  console.log('Finished piping the file.');
+});
+
+
+
+
+// ERROR HANDLING
+readableStream.on('error', (err) => {
+  console.error('Error occurred:', err.message);
+});
+
+writableStream.on('error', (err) => {
+  console.error('Error occurred:', err.message);
+});
+```
+
+#### Buffers
+
+Buffers are temporary storage for raw binary data, which makes them essential when dealing with streams in Node.js. Unlike strings, which are sequences of characters, buffers are sequences of bytes. Each byte is represented as an 8-bit unsigned integer.
+
+
+```js
+Creating a buffer
+const buffer = Buffer.from('Hello, world!', 'utf-8');
+console.log(buffer); // Outputs the binary data
+console.log(buffer.toString('utf-8')); // Converts the buffer back to a string
+
+
+Allocating buffer
+const buf = Buffer.alloc(10); // Creates a buffer of size 10 bytes
+console.log(buf); // Outputs: <Buffer 00 00 00 00 00 00 00 00 00 00>
+
+
+Writing to buffer
+const buf = Buffer.alloc(10);
+buf.write('Node.js');
+console.log(buf.toString('utf-8', 0, 6)); // Outputs: Node.js
+
+
+Manipulating buffer
+const buf = Buffer.from([72, 101, 108, 108, 111]);
+console.log(buf.toString()); // Outputs: Hello
+
+```
