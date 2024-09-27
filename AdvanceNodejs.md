@@ -361,3 +361,172 @@ const buf = Buffer.from([72, 101, 108, 108, 111]);
 console.log(buf.toString()); // Outputs: Hello
 
 ```
+
+
+## Error Handling
+
+Error Handling in Synchronous Code
+```js
+function syncFunction() {
+  try {
+    // Code that may throw an error
+    const result = JSON.parse("{ invalid json }");
+    console.log(result);
+  } catch (error) {
+    console.error("An error occurred:", error.message);
+  }
+}
+
+syncFunction();
+```
+Error Handling in Asynchronous Code
+
+```js
+//Callback
+const fs = require('fs');
+
+fs.readFile('nonexistent.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error reading file:', err.message);
+    return;
+  }
+  console.log(data);
+});
+
+//Promises
+const fsPromises = require('fs').promises;
+
+fsPromises.readFile('nonexistent.txt', 'utf8')
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((err) => {
+    console.error('Error reading file:', err.message);
+  });
+
+```
+Using try...catch in Async Functions
+```js
+async function processFile() {
+  try {
+    const fileData = await readFileAsync();
+    const parsedData = await processData(fileData);
+    console.log('Processed Data:', parsedData);
+  } catch (err) {
+    console.error('Error processing file:', err.message);
+  }
+}
+
+processFile();
+```
+Error Propagation Best Practices
+```js
+//calback
+function doSomething(callback) {
+  fs.readFile('file.txt', 'utf8', (err, data) => {
+    if (err) return callback(err); // Propagate the error to the callback
+    callback(null, data);
+  });
+}
+
+doSomething((err, result) => {
+  if (err) {
+    console.error('Error:', err.message);
+    return;
+  }
+  console.log('File data:', result);
+});
+
+//PROMISES
+//In promises, simply return or throw the error to propagate it. The caller can handle it using .catch()
+//or a try...catch block with async/await.
+
+function readFile() {
+  return fsPromises.readFile('nonexistent.txt', 'utf8');
+}
+
+readFile()
+  .then(data => {
+    console.log('File data:', data);
+  })
+  .catch(err => {
+    console.error('Error:', err.message);
+  });
+
+
+
+//Async wait
+async function doSomething() {
+  try {
+    const data = await fsPromises.readFile('file.txt', 'utf8');
+    return data;
+  } catch (err) {
+    console.error('Error in doSomething:', err.message);
+    throw err;                      // Rethrow the error to propagate it
+  }
+}
+
+async function main() {
+  try {
+    const result = await doSomething();
+    console.log('Result:', result);
+  } catch (err) {
+    console.error('Error in main:', err.message);
+  }
+}
+
+main();
+```
+
+
+ 
+Custom Errors and Error Objects
+You can create custom error classes to better categorize and handle specific error types.
+
+```js
+class FileNotFoundError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'FileNotFoundError';
+  }
+}
+
+async function readFile() {
+  try {
+    const data = await fsPromises.readFile('nonexistent.txt', 'utf8');
+    return data;
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      throw new FileNotFoundError('The file does not exist');
+    }
+    throw err; // Rethrow any other errors
+  }
+}
+
+readFile()
+  .catch(err => {
+    if (err instanceof FileNotFoundError) {
+      console.error('Custom Error:', err.message);
+    } else {
+      console.error('General Error:', err.message);
+    }
+  });
+```
+Global Error Handling in Node.js
+* uncaughtException
+```js
+process.on('uncaughtException', (err) => {
+  console.error('Unhandled Exception:', err.message);
+  // You might want to exit the process here for safety
+  process.exit(1);
+});
+```
+
+* Unhandled Promise Rejections
+```js
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection:', reason.message);
+  // Optionally exit the process
+  process.exit(1);
+});
+```
