@@ -530,3 +530,72 @@ process.on('unhandledRejection', (reason, promise) => {
   process.exit(1);
 });
 ```
+
+
+## Garbage collection and memory leak
+The garbage collector’s job is to free up memory by removing objects that are no longer needed. It operates on the heap memory, which stores objects, arrays, closures, etc. JavaScript uses reference counting and mark-and-sweep algorithms to decide which objects can be safely deallocated.
+
+•	Reference Counting: Tracks the number of references to an object. When there are no more references, the object can be collected.
+•	Mark-and-Sweep: Objects are “marked” if they are reachable from the root (global object or stack). Unmarked objects are considered unreachable and are collected.
+
+Node.js memory is divided into:
+
+1.	Stack memory: Stores local variables, function calls, and execution context.
+2.	Heap memory: Used to allocate dynamic objects, like arrays and objects.
+3.	C++ objects: Some Node.js internals allocate memory outside the V8 heap (e.g., Buffers, Streams).
+
+The garbage collector primarily works on the heap and aims to clean up objects that are no longer reachable to prevent memory leaks.
+
+
+Limits on Memory in Node.js
+
+By default, Node.js has a memory limit of around 1.5 GB for 64-bit systems and 0.7 GB for 32-bit systems for the heap. You can increase this limit using the --max-old-space-size flag:
+
+```
+node --max-old-space-size=4096 app.js  # Increase to 4GB
+```
+
+#### Common Causes of Memory Leaks
+* Declaring variables globally can cause memory to be retained for the lifetime of the application.
+* Unremoved Event Listeners
+```js
+  const EventEmitter = require('events');
+const emitter = new EventEmitter();
+
+emitter.on('data', (data) => {
+  console.log(data);  // This listener may hold references that never get cleaned
+});
+
+emitter.removeListener('data', callback);
+```
+* Closures that reference variables in their parent scope can inadvertently hold onto memory, even when the outer function has finished executing.
+  * Solution: Be careful with closures and avoid capturing large variables unless necessary.
+
+* Unused Timers
+```js
+const intervalId = setInterval(() => {
+  // This code runs indefinitely and holds onto memory
+}, 1000);
+
+clearInterval(intervalId);
+```
+
+#### Profiling and Diagnosing Memory Leaks
+
+* Using heap snapshots
+Heap snapshots capture the state of memory at a particular point in time. This helps you identify objects that are retaining memory unnecessarily.
+
+Steps to capture a heap snapshot:
+
+1.	Start your Node.js app with the --inspect flag:
+```
+node --inspect app.js
+```
+2.	Open Chrome DevTools:
+	•	Navigate to chrome://inspect.
+	•	Click on “Open dedicated DevTools for Node.”
+3.	Go to the Memory tab in DevTools and take a heap snapshot.
+
+* Using heapdump
+
+heapdump is a Node.js module that allows you to create heap snapshots programmatically.
