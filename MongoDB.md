@@ -1,3 +1,120 @@
+## Mongoose
+* Mongoose, by default, creates a pool of connections rather than a single connection.
+* Mongoose uses the MongoDB driver’s connection pool feature, which maintains multiple connections to the database server.
+* This connection pool allows for better performance by reusing existing connections for incoming requests instead of opening a new connection each time, which can be expensive.
+
+CODE TO CREATE MONGODB CONNECTION
+```js
+// Import mongoose
+const mongoose = require('mongoose');
+
+// MongoDB connection URL (replace with your connection string)
+const mongoURI = 'mongodb://localhost:27017/myDatabase'; // or use a cloud MongoDB URL
+
+// Connect to MongoDB
+mongoose.connect(mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,    // Avoid deprecation warning for index creation
+    useFindAndModify: false,  // Avoid deprecation warning for findAndModify()
+    poolSize: 5,  // Adjusts the pool size (default is 5)
+    socketTimeoutMS: 45000,  // Time in milliseconds before closing a socket due to inactivity
+    serverSelectionTimeoutMS: 5000  // How long to attempt to select a server before erroring out
+});
+
+// Handle connection events
+const db = mongoose.connection;
+
+db.on('connected', () => {
+    console.log('Mongoose connected to ' + mongoURI);
+});
+
+db.on('error', (err) => {
+    console.error('Mongoose connection error:', err);
+});
+
+db.on('disconnected', () => {
+    console.log('Mongoose disconnected');
+});
+
+// Close the Mongoose connection when Node.js app is closed
+process.on('SIGINT', () => {
+    db.close(() => {
+        console.log('Mongoose disconnected on app termination');
+        process.exit(0);
+    });
+});
+```
+
+* To use the connection pool to perform DB activities
+  * export mongoose from db connection file
+  * import the mongoose, and using it create Model
+  * Export the Model
+  * Import the model in router file and perform the transaction there
+```js
+// db.js
+const mongoose = require('mongoose');
+
+const mongoURI = 'mongodb://localhost:27017/myDatabase';
+
+mongoose.connect(mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    poolSize: 10  // Example to adjust pool size
+});
+
+// Export the connection to reuse it in other files
+const db = mongoose.connection;
+
+db.on('connected', () => {
+    console.log('Mongoose connected to ' + mongoURI);
+});
+
+db.on('error', (err) => {
+    console.error('Mongoose connection error:', err);
+});
+
+module.exports = mongoose;
+
+///////////////////////////
+
+// models/userModel.js
+const mongoose = require('../db'); // Import the mongoose instance from db.js
+
+const userSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    password: String
+});
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
+
+
+//////////////////
+
+// app.js
+const express = require('express');
+const User = require('./models/userModel'); // Import the User model
+
+const app = express();
+
+app.get('/users', async (req, res) => {
+    try {
+        // Example: Fetch all users from the DB
+        const users = await User.find();
+        res.json(users);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
+```
+
 # MongoDB Commands
 
 ```
