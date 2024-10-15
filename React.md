@@ -872,6 +872,76 @@ return(
 //Here header is not routed using Route, therefore it will not have props of history,location and match
 //to get those props in Header we ned to import withRouter  from react-router-dom and then export Header with HOC - export default withRouter(Header)
 ```
+* Prorected Route
+```js
+function ProtectedRoute({ element }) {
+  const isAuthenticated = useAuth(); // Your logic to check if the user is authenticated
+  return isAuthenticated ? element : <Navigate to="/login" />;
+}
+
+<Routes>
+  <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
+</Routes>
+```
+* When navigating between pages, you might want to ensure the page scrolls to the top automatically. This behavior can be added using React hooks:
+```js
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <Routes>{/* your routes here */}</Routes>
+    </Router>
+  );
+}
+```
+
+* Lazy Loading (Code Splitting)
+* To optimize performance, you can load routes lazily, meaning the code for a route is only loaded when the user navigates to it. React has built-in support for lazy loading with React.lazy() and Suspense.
+```js
+import React, { Suspense, lazy } from 'react';
+const Home = lazy(() => import('./Home'));
+const About = lazy(() => import('./About'));
+
+function App() {
+  return (
+    <Router>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </Suspense>
+    </Router>
+  );
+}
+```
+* Lazy loading helps split the app into smaller bundles, each containing only the code necessary for specific parts of the app. This reduces the amount of JavaScript downloaded when the user first opens the app, leading to faster load times.
+* All the lazy load component will have thier own js chunk file, which will get loaded only when required.
+	•	React.lazy(() => import('./Home')): Dynamically imports the Home component only when it’s needed.
+	•	Suspense: While the Home (or any lazily loaded component) is being loaded, Suspense shows a fallback UI (in this case, a simple “Loading…” message) until the component is fully loaded.
+
+
+* Benefits of Lazy Loading
+
+	•	Faster Initial Load: Only the essential code (e.g., the home page or landing page) is loaded when the app starts. Other parts of the app are loaded when the user needs them.
+	•	Reduced Bundle Size: Large applications can be split into smaller chunks, reducing the size of the initial bundle.
+	•	Better User Experience: By loading non-essential code later, users experience faster load times and can interact with your app sooner.
+
+
+
 
 ## Redux
 #### OLD
@@ -1029,6 +1099,19 @@ export const addNoteReducer=(state={},data)=>{
 
 * useCallback -> to memotize a function
 * useMemo -> to memotize a value
+
+## Code-Splitting in Build Tools
+
+React itself supports lazy loading which helps in code splitting, but when you bundle your app (e.g., with Webpack), you can optimize it even further with dynamic imports.
+
+For example, Webpack can automatically split the code into smaller chunks:
+
+below dynamically imports the component and splits the code into a separate chunk, which is only downloaded when needed. Webpack will create separate .js files for each of these chunks during the build process.
+```js
+import('./MyComponent').then(MyComponent => {
+  // Do something with the dynamically imported module
+});
+```
 
 ## Extras
 #### event.target and event.currentTarget
