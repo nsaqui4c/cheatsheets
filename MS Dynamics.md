@@ -53,6 +53,15 @@ Entity Collection = service.RetrieveMultiple(query);
 * In code use same name to get snapshot
 <img width="543" alt="image" src="https://github.com/user-attachments/assets/b16c5d4b-9112-4bbb-83a2-f67a6186e725" />
 
+# Impersonation in plugin
+* We can run the whole plugin with adminDelegation or other user
+  * add step to run as admin
+  <img width="543" alt="image" src="https://github.com/user-attachments/assets/20c03ce3-6365-41b2-b347-3e5aee2064e1" />
+
+* We can run specific part of plugin with other user
+  <img width="543" alt="image" src="https://github.com/user-attachments/assets/7638dcd8-f858-4ecd-938f-3a2399de409b" />
+  <img width="543" alt="image" src="https://github.com/user-attachments/assets/bae8c5a7-6df1-4178-a7fe-0af42dc113b1" />
+
 
 
 # Debugging
