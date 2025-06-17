@@ -56,12 +56,23 @@ Entity Collection = service.RetrieveMultiple(query);
 # Impersonation in plugin
 * We can run the whole plugin with adminDelegation or other user
   * add step to run as admin
-  <img width="543" alt="image" src="https://github.com/user-attachments/assets/20c03ce3-6365-41b2-b347-3e5aee2064e1" />
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/20c03ce3-6365-41b2-b347-3e5aee2064e1" />
 
 * We can run specific part of plugin with other user
-  <img width="543" alt="image" src="https://github.com/user-attachments/assets/7638dcd8-f858-4ecd-938f-3a2399de409b" />
-  <img width="543" alt="image" src="https://github.com/user-attachments/assets/bae8c5a7-6df1-4178-a7fe-0af42dc113b1" />
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/7638dcd8-f858-4ecd-938f-3a2399de409b" />
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/bae8c5a7-6df1-4178-a7fe-0af42dc113b1" />
 
+# Pass data between Plugins
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/416b5771-e3a0-4d17-9c0b-98388f61391a" />
+
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/4883aa73-699c-41ff-a287-a8e7160c7d79" />
+
+# context depth
+We can check how many times plugin as cause to re-run the same code again
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/8652c8dc-acec-4fd0-986a-a29a408bbcf1" />
+
+# Plugin deployment Isolation mode
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/2109d9df-a7a1-4600-b5b9-568451413cbf" />
 
 
 # Debugging
