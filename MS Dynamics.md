@@ -44,6 +44,19 @@ query.ColumnSet = new Columnset(new String []{"emailaddress1","firstName"});
 query.Criteria.AddCondition("emailaddress1",ConditionalOperator.Equal,email);
 Entity Collection = service.RetrieveMultiple(query);
 ```
+# Pre and post entity Images (snapshot)
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/d71f6ff0-da3b-4278-994d-50a557ab9539" />
+
+* While deploying the plugin create new Image (pre-image) and give same name as you have mentioned in code and also, attributes that you want to save
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/7ef1aa96-92d2-40ca-908b-d84fea8ff259" />
+
+* In code use same name to get snapshot
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/b16c5d4b-9112-4bbb-83a2-f67a6186e725" />
+
+
+
+# Debugging
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/6729912f-f994-4b0f-9733-1aeb37005a83" />
 
 
 
