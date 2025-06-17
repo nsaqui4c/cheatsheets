@@ -33,8 +33,9 @@
 
 
 * There are multiple ways of data retreival using sdk query class
-<img width="543" alt="image" src="https://github.com/user-attachments/assets/b3a04b52-587a-4447-8bf2-ec0cc4cf1db9" />
-<img width="543" alt="image" src="https://github.com/user-attachments/assets/c55f97e6-ea10-4b0e-90d1-c154af6cdddf" />
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/fa176860-ec04-43b2-be7e-2f89c8922d6b" />
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/3039f84f-fd22-4689-aa6c-a7a2c60d1295" />
+
 
 ```
 QueryExpression query = new QueryExpression("contact");
