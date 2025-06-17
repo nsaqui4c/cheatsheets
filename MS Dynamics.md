@@ -72,7 +72,14 @@ We can check how many times plugin as cause to re-run the same code again
 <img width="543" alt="image" src="https://github.com/user-attachments/assets/8652c8dc-acec-4fd0-986a-a29a408bbcf1" />
 
 # Plugin deployment Isolation mode
+* In cloud we only have partial trust (sandbox)
 <img width="543" alt="image" src="https://github.com/user-attachments/assets/2109d9df-a7a1-4600-b5b9-568451413cbf" />
+
+# Configuration data
+* We can save two env data
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/45236280-081f-4286-8c8f-5c9d669b8dce" />
+* then create constructor to get the data
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/7382d9b3-95c1-4405-9308-a01478a378b3" />
 
 
 # Debugging
