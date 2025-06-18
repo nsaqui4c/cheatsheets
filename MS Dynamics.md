@@ -34,7 +34,10 @@
 
 * There are multiple ways of data retreival using sdk query class
 <img width="543" alt="image" src="https://github.com/user-attachments/assets/fa176860-ec04-43b2-be7e-2f89c8922d6b" />
+
 <img width="543" alt="image" src="https://github.com/user-attachments/assets/3039f84f-fd22-4689-aa6c-a7a2c60d1295" />
+* Query by attribute
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/4f84aedf-3e6e-4a9f-8001-e7e02dcbf3c7" />
 
 
 ```
