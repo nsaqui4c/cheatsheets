@@ -36,6 +36,7 @@
 <img width="543" alt="image" src="https://github.com/user-attachments/assets/fa176860-ec04-43b2-be7e-2f89c8922d6b" />
 
 <img width="543" alt="image" src="https://github.com/user-attachments/assets/3039f84f-fd22-4689-aa6c-a7a2c60d1295" />
+
 * Query by attribute
 <img width="543" alt="image" src="https://github.com/user-attachments/assets/4f84aedf-3e6e-4a9f-8001-e7e02dcbf3c7" />
 
@@ -88,6 +89,24 @@ We can check how many times plugin as cause to re-run the same code again
 # Debugging
 <img width="543" alt="image" src="https://github.com/user-attachments/assets/6729912f-f994-4b0f-9733-1aeb37005a83" />
 
+
+
+# Custom work flow
+* We can run workflow on demand also
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/fb9f7c2d-8a4d-4b00-b128-0134c19d144c" />
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/8eed6c8a-5b63-4a5a-88f3-c8b513f13b52" />
+
+* You can monitor it by going to setting
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/6de42861-21fb-40b3-ae13-08fe9c4a164a" />
+
+
+
+
+
+
+
+## Difference between plugin and custom work flow
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/13b49010-cd04-4bce-b15d-de0c33a7ac94" />
 
 
 
