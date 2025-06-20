@@ -48,6 +48,34 @@ query.ColumnSet = new Columnset(new String []{"emailaddress1","firstName"});
 query.Criteria.AddCondition("emailaddress1",ConditionalOperator.Equal,email);
 Entity Collection = service.RetrieveMultiple(query);
 ```
+* Query by Fetch XML
+* Go to filter -> select what you are looking for -> details to add condition -> Download fetch XML
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/5a19647d-bcd1-4996-8b9a-5b2facde7f8a" />
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/73e4090a-5c64-4090-9bde-2abc665da95b" />
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/67c2ba11-a967-4e03-883f-651023404b87" />
+
+
+* Aggregate with Fetch XML
+  * sum avg min max count(*)
+  * look for document for detail
+
+
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/4bf1aa92-38f5-4c87-ae3b-7654d55ba57c" />
+
+
+* Qury using LINQ
+
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/201043de-422c-49da-9192-f8864f8152d4" />
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/f1c7252a-10e6-475e-a084-08dd27676996" />
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/8b099c03-9280-4e63-9f76-9eee9058be35" />
+
+
+
+
+
+
+
+
 # Pre and post entity Images (snapshot)
 <img width="543" alt="image" src="https://github.com/user-attachments/assets/d71f6ff0-da3b-4278-994d-50a557ab9539" />
 
@@ -86,7 +114,7 @@ We can check how many times plugin as cause to re-run the same code again
 <img width="543" alt="image" src="https://github.com/user-attachments/assets/7382d9b3-95c1-4405-9308-a01478a378b3" />
 
 
-# Debugging
+# Plugin Debugging
 <img width="543" alt="image" src="https://github.com/user-attachments/assets/6729912f-f994-4b0f-9733-1aeb37005a83" />
 
 
@@ -108,5 +136,8 @@ We can check how many times plugin as cause to re-run the same code again
 ## Difference between plugin and custom work flow
 <img width="543" alt="image" src="https://github.com/user-attachments/assets/13b49010-cd04-4bce-b15d-de0c33a7ac94" />
 
+
+# Console App Integration
+<img width="543" alt="image" src="https://github.com/user-attachments/assets/1e190946-29c1-4a0c-a49c-d2a16c2fd141" />
 
 
