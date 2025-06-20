@@ -140,4 +140,27 @@ We can check how many times plugin as cause to re-run the same code again
 # Console App Integration
 <img width="543" alt="image" src="https://github.com/user-attachments/assets/1e190946-29c1-4a0c-a49c-d2a16c2fd141" />
 
+* Early and late binding
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/129f41aa-709b-4d58-9ccb-f45d437c3ba2" />
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/d533b1c9-180a-4c3f-90f1-2f4bf3d79e9c" />
+
+*For early binding we have to use extra library, login to cloud and download file from your project*
+
+
+# Advance messaging operation using Service.Execute
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/1a7bb59f-c536-4c8b-be83-148b5697dfb0" />
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/feb0219e-4e10-4cef-aee5-bcde0b4d8155" />
+
+* there are some function predefined to us like Service.Create(). But we can use Execute to create function for all messages
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/266396cc-659f-4688-b23b-aefd3e497e59" />
+
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/e0b064f6-26be-49ae-a611-2f2a18edcf71" />
+
+* Execute Multiple request -> similar to batch process -> minimizes the service call
+
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/4ddf100e-3197-40eb-b0ba-5fa9c5bb279e" />
+
+
+
+
 
