@@ -161,6 +161,33 @@ We can check how many times plugin as cause to re-run the same code again
 <img width="575" alt="image" src="https://github.com/user-attachments/assets/4ddf100e-3197-40eb-b0ba-5fa9c5bb279e" />
 
 
+----------------------------------------------------------------------------------------------------------------------
+# Client Side
+
+
+* to upload Js file -> go to your solution -> web resources -> new -> name it -> type js  -> write code and save
+* to trigger -> go to entities -> contact -> forms -> open cintact -> form properties -> import saved js -> select trigger abd save
+
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/0d8cc0a7-13fd-436b-b9e3-70f75e168446" />
+
+
+* Client API provides methods and object to apply to custom business logic using Javascript.
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/b43326cd-c22b-4cb3-a966-0c947a3a9dcd" />
+
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/c8a42fdb-a3c8-46ff-ac60-b71ac5cdc07e" />
+
+*For every js function we have to excecution context as params.
+* We get formContex from the execution context.
+* Form Context has
+  * Data Object -> formContext.data.entity.attributes
+  * UI Object -> formContext.ui.controls
+
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/fae601bd-3fc3-4072-821e-1be542c2c589" />
+
+
+* NameSpace
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/7e65d124-0813-45b9-bf8a-8d1ea396370d" />
 
 
 
+  
