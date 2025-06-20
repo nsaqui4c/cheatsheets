@@ -189,5 +189,18 @@ We can check how many times plugin as cause to re-run the same code again
 <img width="575" alt="image" src="https://github.com/user-attachments/assets/7e65d124-0813-45b9-bf8a-8d1ea396370d" />
 
 
+* Notification
+  
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/4d7a03b6-2771-42bc-89c8-d41bc0a3c1a5" />
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/b95d7b54-9a6c-4b7f-aefd-6fd1a80845af" />
+
+* Preventing auto save for specific entities
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/0d5d7c0d-619f-45e0-9d25-4f543dd3ddc5" />
+
+
+
+
+
+
 
   
