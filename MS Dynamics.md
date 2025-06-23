@@ -198,6 +198,15 @@ We can check how many times plugin as cause to re-run the same code again
 <img width="575" alt="image" src="https://github.com/user-attachments/assets/0d5d7c0d-619f-45e0-9d25-4f543dd3ddc5" />
 
 
+* Lookups
+You have to find guid of atribute if is linked using foriegn key.
+i.e it from different form but you are using in this form also.
+Like in below eg. customerId is from contact, which is used in account form
+
+<img width="546" alt="image" src="https://github.com/user-attachments/assets/38670301-08da-445a-8202-ee953847f988" />
+
+
+
 
 
 
