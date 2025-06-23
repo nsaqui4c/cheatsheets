@@ -201,12 +201,34 @@ We can check how many times plugin as cause to re-run the same code again
 * Lookups
 You have to find guid of atribute if is linked using foriegn key.
 i.e it from different form but you are using in this form also.
-Like in below eg. customerId is from contact, which is used in account form
+Like in below eg. customerId is from Account, which is used in contact form
 
 <img width="546" alt="image" src="https://github.com/user-attachments/assets/38670301-08da-445a-8202-ee953847f988" />
 
 
 
+* Form Type
+<img width="546" alt="image" src="https://github.com/user-attachments/assets/a6d7c847-2daf-4b63-aacc-eb402aedf47c" />
+
+<img width="546" alt="image" src="https://github.com/user-attachments/assets/bc4f44d7-932d-4cbc-b98a-1d71361c789f" />
+
+
+
+* Debuggin javascript -> developer -> sources -> ctrl+p -> filename
+  
+
+
+### HTML WebResource
+
+<img width="546" alt="image" src="https://github.com/user-attachments/assets/a27d0db9-c6fd-4e70-a3bb-fc9842866fdf" />
+
+To Create
+* solution -> web resource -> name it -> paste code and save
+* got to form -> insert -> select web resource -> save and publish
+
+<img width="546" alt="image" src="https://github.com/user-attachments/assets/f08975d4-55c5-48cc-a7b8-6cb9f96a088a" />
+
+<img width="546" alt="image" src="https://github.com/user-attachments/assets/71f0a452-439c-4aa6-81e8-3a590ab2e5fe" />
 
 
 
