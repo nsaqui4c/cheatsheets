@@ -232,6 +232,20 @@ To Create
 
 
 
+### Web API
+<img width="546" alt="image" src="https://github.com/user-attachments/assets/8dea4a9f-ea77-4142-9574-412b7ce396d1" />
+
+<img width="546" alt="image" src="https://github.com/user-attachments/assets/89a26fb7-bb46-47ec-bcb2-7703f5769dcb" />
 
 
-  
+* create record using web API
+*Note: use parent.Xrm.WebApi.CreateRecord*
+
+<img width="546" alt="image" src="https://github.com/user-attachments/assets/8dcdce0c-4c2f-4735-bce5-d5576c6c1a8a" />
+
+* retrieving using query param
+* url / formType/$select=firstName,lastName&$filter=address1_city eq 'Redmond' 
+<img width="546" alt="image" src="https://github.com/user-attachments/assets/98b5738d-7337-4f5d-a38e-8c86eeb1c146" />
+
+<img width="546" alt="image" src="https://github.com/user-attachments/assets/4aa75e1f-ecb4-4290-92a4-039b6e2992e6" />
+
